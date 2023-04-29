@@ -3,18 +3,18 @@
 const addBabelPlugins = () => {
   const configs = [
     [
-      "import",
+      'import',
       {
-        libraryName: "lodash",
-        libraryDirectory: "",
+        libraryName: 'lodash',
+        libraryDirectory: '',
         camel2DashComponentName: false,
       },
-      "lodash",
+      'lodash',
     ],
     [
-      "babel-plugin-styled-components",
+      'babel-plugin-styled-components',
       {
-        displayName: process.env.NODE_ENV === "development",
+        displayName: process.env.NODE_ENV === 'development',
       },
     ],
     // ['react-activation/babel'],

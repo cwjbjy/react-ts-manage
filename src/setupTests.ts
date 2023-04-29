@@ -3,11 +3,3 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-
-// declare module "*.css";
-declare module '*.png';
-declare module '*.jpg';
-
-// declare interface Window {
-//   echarts: any;
-// }
