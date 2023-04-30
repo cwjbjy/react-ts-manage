@@ -4,7 +4,7 @@ import { Form, Input, Button } from 'antd';
 import { produce } from 'immer';
 import * as ls from 'local-storage';
 import { Dispatch, forwardRef, memo, useImperativeHandle } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import API from '@/apis/login';
@@ -27,7 +27,7 @@ const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
     },
   }));
 
-  const history = useHistory();
+  const navigation = useNavigate();
 
   const [form] = Form.useForm();
 
@@ -43,7 +43,7 @@ const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
           draft.passWord = params[0].get('passWord');
         }),
       );
-      history.push('/home/firstItem');
+      navigation('/firstItem');
     },
     onError: (error: Record<string, any>) => {
       if (error.status === CODE_NAME_PASS) {

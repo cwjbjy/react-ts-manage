@@ -3,7 +3,7 @@ import { useRequest } from 'ahooks';
 import { Menu, Dropdown } from 'antd';
 import React, { useContext, useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import ThemeContext from '../../layout/themeContext';
 
@@ -22,7 +22,7 @@ const Header: React.FC<Props> = ({ userName }) => {
   const { theme, changeTheme } = useContext(ThemeContext);
   const { fileName } = useSelector((state: any) => state.file);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigation = useNavigate();
 
   useRequest(() => API.getImage({ user_name: userName }), {
     ready: !!userName,
@@ -34,10 +34,10 @@ const Header: React.FC<Props> = ({ userName }) => {
   const onList = useCallback(
     ({ key }: { key: any }) => {
       if (key === '1') {
-        history.push('/login');
+        navigation('/login');
       }
     },
-    [history],
+    [navigation],
   );
 
   const menu = useMemo(

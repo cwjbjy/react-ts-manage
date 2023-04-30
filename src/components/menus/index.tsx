@@ -1,6 +1,6 @@
 import { Menu } from 'antd';
 import { memo, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { MenusTypes } from './config';
 import './index.scss';
@@ -47,13 +47,13 @@ const Menus = ({ menus }: Props) => {
       {menus.map((item) =>
         !item.children ? (
           <Menu.Item key={item.key} icon={item.icon}>
-            <Link to={{ pathname: item.path }}>{item.name}</Link>
+            <NavLink to={{ pathname: item.path }}>{item.name}</NavLink>
           </Menu.Item>
         ) : (
           <SubMenu key={item.key} title={item.name} icon={item.icon}>
             {item.children.map((itemChild) => (
               <Menu.Item key={itemChild.key}>
-                <Link to={{ pathname: itemChild.path }}>{itemChild.name}</Link>
+                <NavLink to={{ pathname: itemChild.path }}>{itemChild.name}</NavLink>
               </Menu.Item>
             ))}
           </SubMenu>

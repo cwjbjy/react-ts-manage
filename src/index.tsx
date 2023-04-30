@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
@@ -6,16 +5,18 @@ import 'antd/dist/reset.css';
 import './assets/icon/iconfont.css';
 
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-
-import routeConfig from './config/routeConfig.js';
-import renderRoutes from './routes/renderRoutes';
+import { Suspense } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { FullScreenLoading } from '@/components/layout/loading';
+import router from './router';
 import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
-    <BrowserRouter>{renderRoutes(routeConfig)}</BrowserRouter>
+    <Suspense fallback={<FullScreenLoading />}>
+      <RouterProvider router={router} />
+    </Suspense>
   </Provider>,
 );
 

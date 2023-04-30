@@ -1,7 +1,7 @@
 import { Button, message, Input, Card, Modal } from 'antd';
 import * as ls from 'local-storage';
 import PubSub from 'pubsub-js';
-import React, { useRef, useEffect, useMemo, useState, useCallback } from 'react';
+import { useRef, useEffect, useMemo, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -19,7 +19,7 @@ interface Item {
 
 const img_url = process.env.REACT_APP_IMG_URL;
 
-const ChatRoom: React.FC<RootState> = () => {
+const ChatRoom = () => {
   const [messageHistory, setMessageHistory] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalImage, setIsModalImage] = useState(false);
@@ -153,7 +153,7 @@ const ChatRoom: React.FC<RootState> = () => {
   );
 };
 
-export default React.memo(ChatRoom);
+export default ChatRoom;
 
 export const Header = styled.div`
   margin-bottom: 20px;

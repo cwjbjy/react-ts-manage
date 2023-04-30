@@ -26,37 +26,37 @@ export interface MenusTypes {
 export const menus: MenusTypes[] = [
   {
     name: '系统首页',
-    path: '/home/firstItem',
+    path: '/firstItem',
     key: 'firstItem',
     icon: <img src={Home} alt="加载失败" className="menuIcon"></img>,
   },
   {
     name: '模拟航线',
-    path: '/home/fleet',
+    path: '/fleet',
     key: 'fleet',
     icon: <img src={ChinaMap} alt="加载失败" className="menuIcon"></img>,
   },
   {
     name: '图片上传',
-    path: '/home/fileUp',
+    path: '/fileUp',
     key: 'fileUp',
     icon: <img src={Upload} alt="加载失败" className="menuIcon"></img>,
   },
   {
     name: '文件预览',
-    path: '/home/pdf',
+    path: '/pdf',
     key: 'pdf',
     icon: <img src={Pdf} alt="加载失败" className="menuIcon"></img>,
   },
   {
     name: '基础图表',
-    path: '/home/baseEcharts',
+    path: '/baseEcharts',
     key: 'baseEcharts',
     icon: <img src={Echarts} alt="加载失败" className="menuIcon"></img>,
   },
   {
     name: '基础表格',
-    path: '/home/baseTable',
+    path: '/baseTable',
     key: 'baseTable',
     icon: <img src={BaseTable} alt="加载失败" className="menuIcon"></img>,
   },
@@ -67,12 +67,12 @@ export const menus: MenusTypes[] = [
     children: [
       {
         name: '拖拽列表',
-        path: '/home/drag/dragList',
+        path: '/dragList',
         key: 'dragList',
       },
       {
         name: '拖拽弹框',
-        path: '/home/drag/dragDialog',
+        path: '/dragDialog',
         key: 'dragDialog',
       },
     ],
@@ -80,7 +80,7 @@ export const menus: MenusTypes[] = [
   {
     name: '语言转换',
     icon: <img src={I18n} alt="加载失败" className="menuIcon"></img>,
-    path: '/home/I18n',
+    path: '/I18n',
     key: 'I18n',
   },
   {
@@ -90,36 +90,36 @@ export const menus: MenusTypes[] = [
     children: [
       {
         name: '一般流程图',
-        path: '/home/chart/commonChart',
+        path: '/commonChart',
         key: 'commonChart',
       },
       {
         name: '定位流程图',
-        path: '/home/chart/positionChart',
+        path: '/positionChart',
         key: 'positionChart',
       },
       {
         name: '折叠流程图',
-        path: '/home/chart/foldChart',
+        path: '/foldChart',
         key: 'foldChart',
       },
     ],
   },
   {
     name: '放大镜',
-    path: '/home/magnifying',
+    path: '/magnifying',
     key: 'magnifying',
     icon: <img src={Magnifying} alt="加载失败" className="menuIcon"></img>,
   },
   {
     name: '聊天室',
-    path: '/home/chatRoom',
+    path: '/chatRoom',
     key: 'chatRoom',
     icon: <img src={Chat} alt="加载失败" className="menuIcon"></img>,
   },
   {
     name: '后台管理',
-    path: '/home/manage',
+    path: '/manage',
     key: 'manage',
     icon: <img src={Manage} alt="加载失败" className="menuIcon"></img>,
   },

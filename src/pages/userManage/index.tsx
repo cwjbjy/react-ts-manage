@@ -1,7 +1,7 @@
 import { useRequest } from 'ahooks';
 import { Card, Modal, message, Spin } from 'antd';
-import { set } from 'local-storage';
-import { useCallback, useState } from 'react';
+import * as ls from 'local-storage';
+import { useCallback, useState, useMemo } from 'react';
 
 import PassChange from './components/passChange';
 import UserTable from './components/userTable';
@@ -30,6 +30,7 @@ const UserManage = () => {
   const [isModalVisible, setModal] = useState(false);
   const [password, setPassword] = useState('');
   const [tableData, setTableData] = useState<Item[]>([]);
+  const userName = useMemo(() => ls.get<UserInfo>('userInfo').userName, []);
 
   const onModal = useCallback(({ isModalVisible, info }: { isModalVisible: any; info: any }) => {
     setModal(isModalVisible);
@@ -48,7 +49,7 @@ const UserManage = () => {
       message.success({
         content: '密码修改成功',
       });
-      set(USER_INFO, {
+      ls.set(USER_INFO, {
         userName: params[0].user_name,
         passWord: params[0].password,
         flag: true,
@@ -87,6 +88,7 @@ const UserManage = () => {
 
   const getPass = useCallback((val: any) => setPassword(val), []);
 
+  if (userName !== '一叶扁舟') return <>管理员账户方可查看</>;
   return (
     <section>
       {loading ? (

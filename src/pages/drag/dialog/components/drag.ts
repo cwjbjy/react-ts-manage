@@ -30,4 +30,6 @@ class DragBox {
   }
 }
 
-export default new DragBox();
+const Drag = new DragBox();
+
+export default Drag;
