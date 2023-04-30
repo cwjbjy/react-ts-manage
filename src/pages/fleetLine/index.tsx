@@ -11,4 +11,4 @@ const FleetLine = () => {
   );
 };
 
-export default React.memo(FleetLine);
+export default FleetLine;

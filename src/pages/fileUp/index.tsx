@@ -3,7 +3,7 @@ import { useRequest } from 'ahooks';
 import { Upload, message, Card } from 'antd';
 import { get } from 'local-storage';
 import * as ls from 'local-storage';
-import React, { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import API from '@/apis/user';
@@ -87,4 +87,4 @@ const FileUp = () => {
   );
 };
 
-export default React.memo(FileUp);
+export default FileUp;

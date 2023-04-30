@@ -1,5 +1,5 @@
 import { Modal, Card, Button } from 'antd';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Toast from './components/index';
 import './index.scss';
@@ -13,7 +13,7 @@ const DragModel = () => {
         <Button type="primary" size="large" onClick={() => onVisible(true)}>
           点我弹框
         </Button>
-        <Modal onCancel={() => onVisible(false)} onOk={() => onVisible(false)} title="拖拽弹框" visible={visible}>
+        <Modal onCancel={() => onVisible(false)} onOk={() => onVisible(false)} title="拖拽弹框" open={visible}>
           <Toast></Toast>
         </Modal>
       </Card>
@@ -21,4 +21,4 @@ const DragModel = () => {
   );
 };
 
-export default React.memo(DragModel);
+export default DragModel;

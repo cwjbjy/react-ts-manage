@@ -99,7 +99,7 @@ const UserManage = () => {
             <strong>管理员可修改密码，普通用户可删除</strong>
             <UserTable tableData={tableData} onModal={onModal} onDelete={onDelete} />
           </Card>
-          <Modal title="修改密码" visible={isModalVisible} onOk={handleOk} onCancel={() => setModal(false)}>
+          <Modal title="修改密码" open={isModalVisible} onOk={handleOk} onCancel={() => setModal(false)}>
             <PassChange getPass={getPass} />
           </Modal>
         </>

@@ -1,8 +1,9 @@
 import { useRequest } from 'ahooks';
-import { Row, Col, Card, Space } from 'antd';
+import { Row, Col, Card } from 'antd';
 import { get } from 'local-storage';
-import React, { useContext, useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 
 import ThemeContext from '../../layout/themeContext';
 import Bar from './components/bar';
@@ -46,10 +47,10 @@ const HomePage = () => {
   return (
     <section style={{ paddingLeft: 20 }}>
       <div className="row1">
-        <Space direction="vertical" size={20}>
+        <Wrapper>
           <UserCard fileName={fileName} userName={userName} registerTime={createTime} />
           <ProgressCard />
-        </Space>
+        </Wrapper>
         <div style={{ marginLeft: 20, flex: 1 }}>
           <Message />
           <div className="Schedule">
@@ -73,4 +74,9 @@ const HomePage = () => {
   );
 };
 
-export default React.memo(HomePage);
+export default HomePage;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

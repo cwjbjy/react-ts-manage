@@ -1,5 +1,5 @@
 import { Card, Button, Modal } from 'antd';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './index.scss';
 
 const PdfPreview = () => {
@@ -18,7 +18,7 @@ const PdfPreview = () => {
           title="pdf预览"
           style={{ top: 20 }}
           width="90%"
-          visible={isModalVisible}
+          open={isModalVisible}
           footer={null}
           onCancel={() => setIsModalVisible(false)}
         >
@@ -29,4 +29,4 @@ const PdfPreview = () => {
   );
 };
 
-export default React.memo(PdfPreview);
+export default PdfPreview;

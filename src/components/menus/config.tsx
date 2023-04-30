@@ -16,8 +16,7 @@ import Upload from '@/assets/images/menus/upload.png';
 import './config.scss';
 
 export interface MenusTypes {
-  name: string;
-  path?: string;
+  label: string;
   key: string;
   icon?: ReactNode;
   children?: MenusTypes[];
@@ -25,102 +24,87 @@ export interface MenusTypes {
 
 export const menus: MenusTypes[] = [
   {
-    name: '系统首页',
-    path: '/firstItem',
-    key: 'firstItem',
+    label: '系统首页',
+    key: '/firstItem',
     icon: <img src={Home} alt="加载失败" className="menuIcon"></img>,
   },
   {
-    name: '模拟航线',
-    path: '/fleet',
-    key: 'fleet',
+    label: '模拟航线',
+    key: '/fleet',
     icon: <img src={ChinaMap} alt="加载失败" className="menuIcon"></img>,
   },
   {
-    name: '图片上传',
-    path: '/fileUp',
-    key: 'fileUp',
+    label: '图片上传',
+    key: '/fileUp',
     icon: <img src={Upload} alt="加载失败" className="menuIcon"></img>,
   },
   {
-    name: '文件预览',
-    path: '/pdf',
-    key: 'pdf',
+    label: '文件预览',
+    key: '/pdf',
     icon: <img src={Pdf} alt="加载失败" className="menuIcon"></img>,
   },
   {
-    name: '基础图表',
-    path: '/baseEcharts',
-    key: 'baseEcharts',
+    label: '基础图表',
+    key: '/baseEcharts',
     icon: <img src={Echarts} alt="加载失败" className="menuIcon"></img>,
   },
   {
-    name: '基础表格',
-    path: '/baseTable',
-    key: 'baseTable',
+    label: '基础表格',
+    key: '/baseTable',
     icon: <img src={BaseTable} alt="加载失败" className="menuIcon"></img>,
   },
   {
-    name: '拖拽组件',
-    key: 'drag',
+    label: '拖拽组件',
+    key: '/drag',
     icon: <img src={Drag} alt="加载失败" className="menuIcon"></img>,
     children: [
       {
-        name: '拖拽列表',
-        path: '/dragList',
-        key: 'dragList',
+        label: '拖拽列表',
+        key: '/dragList',
       },
       {
-        name: '拖拽弹框',
-        path: '/dragDialog',
-        key: 'dragDialog',
+        label: '拖拽弹框',
+        key: '/dragDialog',
       },
     ],
   },
   {
-    name: '语言转换',
+    label: '语言转换',
     icon: <img src={I18n} alt="加载失败" className="menuIcon"></img>,
-    path: '/I18n',
-    key: 'I18n',
+    key: '/I18n',
   },
   {
-    name: '流程图',
-    key: 'flowChart',
+    label: '流程图',
+    key: '/flowChart',
     icon: <img src={FlowChart} alt="加载失败" className="menuIcon"></img>,
     children: [
       {
-        name: '一般流程图',
-        path: '/commonChart',
-        key: 'commonChart',
+        label: '一般流程图',
+        key: '/commonChart',
       },
       {
-        name: '定位流程图',
-        path: '/positionChart',
-        key: 'positionChart',
+        label: '定位流程图',
+        key: '/positionChart',
       },
       {
-        name: '折叠流程图',
-        path: '/foldChart',
-        key: 'foldChart',
+        label: '折叠流程图',
+        key: '/foldChart',
       },
     ],
   },
   {
-    name: '放大镜',
-    path: '/magnifying',
-    key: 'magnifying',
+    label: '放大镜',
+    key: '/magnifying',
     icon: <img src={Magnifying} alt="加载失败" className="menuIcon"></img>,
   },
   {
-    name: '聊天室',
-    path: '/chatRoom',
-    key: 'chatRoom',
+    label: '聊天室',
+    key: '/chatRoom',
     icon: <img src={Chat} alt="加载失败" className="menuIcon"></img>,
   },
   {
-    name: '后台管理',
-    path: '/manage',
-    key: 'manage',
+    label: '后台管理',
+    key: '/manage',
     icon: <img src={Manage} alt="加载失败" className="menuIcon"></img>,
   },
 ];

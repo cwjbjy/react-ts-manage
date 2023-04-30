@@ -49,7 +49,7 @@ const data = [
 
 const Schedule = () => {
   return (
-    <Card hoverable style={{ height: 412 }} title="人员列表" className="schedule">
+    <Card hoverable style={{ height: 449 }} title="人员列表" className="schedule">
       <Table dataSource={data} pagination={false}>
         <Column title="Name" dataIndex="lastName" key="lastName" />
         <Column title="Age" dataIndex="age" key="age" />

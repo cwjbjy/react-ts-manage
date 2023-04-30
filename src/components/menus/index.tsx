@@ -1,6 +1,6 @@
 import { Menu } from 'antd';
-import { memo, useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { memo, useEffect, useCallback, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { MenusTypes } from './config';
 import './index.scss';
@@ -9,19 +9,16 @@ interface Props {
   menus: MenusTypes[];
 }
 
-const { SubMenu } = Menu;
-
 const rootSubmenuKeys = ['drag', 'flowChart'];
 
 const Menus = ({ menus }: Props) => {
   const location = useLocation();
+  const navigation = useNavigate();
 
   const [selectedKey, setselectedKeys] = useState(['']);
 
   useEffect(() => {
-    let index = location.pathname.lastIndexOf('/');
-    let key = location.pathname.substr(index + 1);
-    setselectedKeys([key]);
+    setselectedKeys([location.pathname]);
   }, [location]);
 
   const [openKeys, setOpenKeys] = useState<any[]>([]);
@@ -35,6 +32,13 @@ const Menus = ({ menus }: Props) => {
     }
   };
 
+  const onClick = useCallback(
+    (e: any) => {
+      navigation(e.key);
+    },
+    [navigation],
+  );
+
   return (
     <Menu
       style={{ width: 256 }}
@@ -42,24 +46,10 @@ const Menus = ({ menus }: Props) => {
       openKeys={openKeys}
       mode="inline"
       className="Menu"
+      items={menus}
       onOpenChange={onOpenChange}
-    >
-      {menus.map((item) =>
-        !item.children ? (
-          <Menu.Item key={item.key} icon={item.icon}>
-            <NavLink to={{ pathname: item.path }}>{item.name}</NavLink>
-          </Menu.Item>
-        ) : (
-          <SubMenu key={item.key} title={item.name} icon={item.icon}>
-            {item.children.map((itemChild) => (
-              <Menu.Item key={itemChild.key}>
-                <NavLink to={{ pathname: itemChild.path }}>{itemChild.name}</NavLink>
-              </Menu.Item>
-            ))}
-          </SubMenu>
-        ),
-      )}
-    </Menu>
+      onClick={onClick}
+    ></Menu>
   );
 };
 

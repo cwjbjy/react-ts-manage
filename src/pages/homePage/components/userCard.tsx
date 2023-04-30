@@ -1,5 +1,5 @@
 import { Card, Row, Col } from 'antd';
-import React from 'react';
+import { memo } from 'react';
 
 import { register } from '@/filter';
 import './userCard.scss';
@@ -11,11 +11,11 @@ interface Props {
 
 const img_url = process.env.REACT_APP_IMG_URL;
 
-const UserCard: React.FC<Props> = ({ userName, registerTime, fileName }) => {
+const UserCard = ({ userName, registerTime, fileName }: Props) => {
   let role = userName === '一叶扁舟' ? '管理员' : '普通用户';
 
   return (
-    <Card hoverable className="user">
+    <Card hoverable className="user" style={{ marginBottom: 10 }}>
       <Row className="user-top">
         <Col span="12">{fileName && <img src={`${img_url}${fileName}`} className="user-img" alt="加载失败" />}</Col>
         <Col span="12" className="user-area">
@@ -42,4 +42,4 @@ UserCard.defaultProps = {
   fileName: '',
 };
 
-export default React.memo(UserCard);
+export default memo(UserCard);

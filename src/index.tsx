@@ -7,7 +7,7 @@ import './assets/icon/iconfont.css';
 import { Provider } from 'react-redux';
 import { Suspense } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { FullScreenLoading } from '@/components/layout/loading';
+import FullScreenLoading from '@/components/layout/loading';
 import router from './router';
 import store from './store';
 

@@ -134,7 +134,7 @@ const ChatRoom = () => {
           </div>
         </div>
       </Card>
-      <Modal title="使用说明" visible={isModalVisible} footer={null} onCancel={() => setIsModalVisible(false)}>
+      <Modal title="使用说明" open={isModalVisible} footer={null} onCancel={() => setIsModalVisible(false)}>
         <div>1.点击连接；</div>
         <div>2.使用另一个浏览器，登录另一个账户，点击连接；或者使用另一台电脑登录另一个账户</div>
         <div>3.输入消息，点击发送或者回车发送；</div>
@@ -142,7 +142,7 @@ const ChatRoom = () => {
       <Modal
         title="效果图"
         wrapClassName="app-img-modal"
-        visible={isModalImage}
+        open={isModalImage}
         footer={null}
         onCancel={() => setIsModalImage(false)}
         width="90%"

@@ -1,5 +1,5 @@
 import { useTitle } from 'ahooks';
-import { BackTop } from 'antd';
+import { FloatButton } from 'antd';
 import { get } from 'local-storage';
 import * as ls from 'local-storage';
 import { useState, useCallback, useMemo, useRef } from 'react';
@@ -7,7 +7,7 @@ import { useState, useCallback, useMemo, useRef } from 'react';
 import Header from '../components/header/index';
 import { menus } from '../components/menus/config';
 import Menus from '../components/menus/index';
-import { FullScreenLoading } from '@/components/layout/loading';
+import FullScreenLoading from '@/components/layout/loading';
 import Global from '../global/index';
 import { Suspense } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
@@ -32,7 +32,7 @@ const AppHome = () => {
 
   const newMenus = useMemo(() => {
     let authMenus = get<string[]>('menu');
-    return menus.filter((item) => authMenus && authMenus.includes(item.key));
+    return menus.filter((item) => authMenus && authMenus.includes(item.key.split('/')[1]));
   }, []);
 
   const changeTheme = useCallback((color: any) => {
@@ -45,7 +45,7 @@ const AppHome = () => {
 
   return (
     <>
-      <BackTop visibilityHeight={100} target={() => overFlowRef.current!} />
+      <FloatButton.BackTop visibilityHeight={100} target={() => overFlowRef.current!} />
       <ThemeContext.Provider value={{ theme, changeTheme }}>
         <div className={theme}>
           <Header userName={userName} />

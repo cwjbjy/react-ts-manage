@@ -5,7 +5,7 @@ import './message.scss';
 
 const Message = () => {
   return (
-    <Row className="icon-area" style={{ marginBottom: 20 }}>
+    <Row className="icon-area" style={{ marginBottom: 10 }}>
       <Col span="8" className="icon-box">
         <Card hoverable bodyStyle={{ padding: 0 }}>
           <div className="icon-content">
