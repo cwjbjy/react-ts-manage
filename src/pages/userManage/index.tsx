@@ -8,7 +8,7 @@ import UserTable from './components/userTable';
 
 import { user, updateUser, deleteUser } from '@/apis/user';
 import type { RowItem } from '@/apis/model/userModel';
-import { USER_INFO } from '@/config/constant.js';
+import { USER_INFO } from '@/config/constant';
 import './index.scss';
 
 interface Info {

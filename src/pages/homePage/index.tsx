@@ -13,7 +13,7 @@ import Schedule from './components/schedule';
 import UserCard from './components/userCard';
 
 import { getUser } from '@/apis/user';
-import { USER_INFO } from '@/config/constant.js';
+import { USER_INFO } from '@/config/constant';
 import './index.scss';
 
 const barModel = {

@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from '@/store/hooks';
 
 import { getImage } from '@/apis/user';
 import { ACCESS_TOKEN } from '@/config/constant';
-import { USER_INFO } from '@/config/constant.js';
+import { USER_INFO } from '@/config/constant';
 import { setFileName } from '@/store/file';
 import './index.scss';
 

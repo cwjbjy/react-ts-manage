@@ -5,9 +5,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import LoginForm from './components/form';
 import RegisterForm from './components/register';
 import LoginOther from './components/third';
-import { Container, Header, Main, Form } from '@/components/layout/login.jsx';
+import { Container, Header, Main, Form } from '@/components/layout/login';
 
-import { USER_INFO } from '@/config/constant.js';
+import { USER_INFO } from '@/config/constant';
 import clearInfo from '@/utils/clearInfo';
 
 interface ForwardObject {

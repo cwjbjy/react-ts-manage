@@ -1,7 +1,5 @@
 import { Card, Row, Col } from 'antd';
 import { memo } from 'react';
-
-import { register } from '@/filter';
 import './userCard.scss';
 interface Props {
   userName: string;
@@ -25,7 +23,7 @@ const UserCard = ({ userName, registerTime, fileName }: Props) => {
       <Row className="user-bottom">
         <div className="user-info-list">
           <span>注册时间：</span>
-          <span>{register(registerTime)}</span>
+          <span>{registerTime}</span>
         </div>
         <div className="user-info-list">
           <span>权限等级：</span>
