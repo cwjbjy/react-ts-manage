@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface ThemeState {
-  theme: string;
+  theme: ThemeType;
 }
 
 const initialState: ThemeState = {
@@ -13,7 +13,7 @@ const theme = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    changeTheme: (state, action: PayloadAction<string>) => {
+    changeTheme: (state, action: PayloadAction<ThemeType>) => {
       state.theme = action.payload;
     },
   },

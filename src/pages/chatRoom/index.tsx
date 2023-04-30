@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import showImage from '@/assets/images/chartRoom/chatShowV2.0.png';
 import rootImage from '@/assets/images/chartRoom/root.png';
 import { bus } from '@/constant/bus.js';
-import insService from '@/service/websocket';
+import insService from '@/utils/websocket';
 import './index.scss';
 interface Item {
   name: string;
@@ -22,7 +22,7 @@ const ChatRoom = () => {
   const [messageHistory, setMessageHistory] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalImage, setIsModalImage] = useState(false);
-  const inputRef = useRef<any>(null);
+  const inputRef = useRef<any>();
   const userName = useMemo(() => ls.get<UserInfo>('userInfo').userName, []);
   const { fileName } = useAppSelector((state) => state.file);
   const [connectFlag, setConnectFlag] = useState(false);
@@ -31,7 +31,7 @@ const ChatRoom = () => {
   const infoListRef = useRef(null);
 
   useEffect(() => {
-    PubSub.subscribe(bus.updateWs, (_: any, data: any) => {
+    PubSub.subscribe(bus.updateWs, (_: unknown, data: any) => {
       setLatestMessage(data);
     });
     return () => {

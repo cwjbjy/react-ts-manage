@@ -5,20 +5,20 @@ import { useCallback, useState, useMemo } from 'react';
 
 import PassChange from './components/passChange';
 import UserTable from './components/userTable';
-import { Item } from './components/userTable';
 
-import API from '@/apis/user';
+import { user, updateUser, deleteUser } from '@/apis/user';
+import type { RowItem } from '@/apis/model/userModel';
 import { USER_INFO } from '@/config/constant.js';
 import './index.scss';
 
 interface Info {
-  id: string;
+  id: number;
   user_name: string;
 }
 
-const setData = (data: Item[]) => {
-  let newArr: Item[] = [];
-  data.forEach((item: Item, index: number) => {
+const setData = (data: RowItem[]) => {
+  let newArr: RowItem[] = [];
+  data.forEach((item: RowItem, index: number) => {
     let newItem = Object.assign({}, item, { key: index });
     newArr.push(newItem);
   });
@@ -29,21 +29,21 @@ const UserManage = () => {
   const [info, setInfo] = useState<Info>({} as Info);
   const [isModalVisible, setModal] = useState(false);
   const [password, setPassword] = useState('');
-  const [tableData, setTableData] = useState<Item[]>([]);
+  const [tableData, setTableData] = useState<RowItem[]>([]);
   const userName = useMemo(() => ls.get<UserInfo>('userInfo').userName, []);
 
-  const onModal = useCallback(({ isModalVisible, info }: { isModalVisible: any; info: any }) => {
+  const onModal = useCallback(({ isModalVisible, info }: { isModalVisible: boolean; info: Info }) => {
     setModal(isModalVisible);
     setInfo(info);
   }, []);
 
-  const { run, loading } = useRequest(API.getUsers, {
-    onSuccess: (res: { code: number; data: Item[] }) => {
-      setTableData(setData(res.data));
+  const { run, loading } = useRequest(user, {
+    onSuccess: (res) => {
+      setTableData(setData(res.data.data));
     },
   });
 
-  const amend = useRequest(API.updateUser, {
+  const { run: handleUpdate } = useRequest(updateUser, {
     manual: true,
     onSuccess: (data, params) => {
       message.success({
@@ -57,7 +57,7 @@ const UserManage = () => {
     },
   });
 
-  const deleteUser = useRequest(API.deleteUser, {
+  const { run: handleDeleteUser } = useRequest(deleteUser, {
     manual: true,
     onSuccess: () => {
       message.success({
@@ -68,11 +68,11 @@ const UserManage = () => {
   });
 
   const onDelete = useCallback(
-    (value: any) => {
+    (value: RowItem) => {
       let { id } = value;
-      deleteUser.run({ id });
+      handleDeleteUser({ id });
     },
-    [deleteUser],
+    [handleDeleteUser],
   );
 
   const handleOk = useCallback(() => {
@@ -82,11 +82,11 @@ const UserManage = () => {
       user_name,
       password,
     };
-    amend.run(params);
+    handleUpdate(params);
     setModal(false);
-  }, [amend, info, password]);
+  }, [handleUpdate, info, password]);
 
-  const getPass = useCallback((val: any) => setPassword(val), []);
+  const getPass = useCallback((val: string) => setPassword(val), []);
 
   if (userName !== '一叶扁舟') return <>管理员账户方可查看</>;
   return (

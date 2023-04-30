@@ -123,7 +123,7 @@ const EditableTable = () => {
     {
       title: 'operation',
       dataIndex: 'operation',
-      render: (_: any, record: Item) => {
+      render: (_: unknown, record: Item) => {
         const editable = isEditing(record);
         return editable ? (
           <span>

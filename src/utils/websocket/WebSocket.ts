@@ -1,8 +1,13 @@
 import PubSub from 'pubsub-js';
 
-import { User } from './types';
-
 import { bus } from '@/constant/bus.js';
+
+export interface User {
+  type: string;
+  name: string;
+  image: string;
+}
+
 const ws = process.env.REACT_APP_WS;
 export default class WebsocketClass {
   public client: any;

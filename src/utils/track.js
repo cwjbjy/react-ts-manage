@@ -1,7 +1,7 @@
 import { getTime, browserType } from './comFunc';
 import { onRouterChange } from './onRouter';
 
-import API from '@/apis/user';
+import { trackWeb } from '@/apis/user';
 class Track {
   constructor() {
     this.info = {};
@@ -41,7 +41,7 @@ class Track {
     });
 
     /* 发送数据 */
-    API.getUserInfo({ data: JSON.stringify(this.info) });
+    trackWeb({ data: JSON.stringify(this.info) });
   }
   addProperties(props) {
     Object.assign(this.info, props);

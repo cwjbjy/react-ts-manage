@@ -7,7 +7,7 @@ import { setFileName } from '@/store/file';
 import { changeTheme } from '@/store/theme';
 import { useNavigate } from 'react-router-dom';
 
-import API from '@/apis/user';
+import { getImage } from '@/apis/user';
 import type { MenuProps } from 'antd';
 
 import './index.scss';
@@ -51,15 +51,15 @@ const Header = ({ userName }: Props) => {
   const dispatch = useAppDispatch();
   const navigation = useNavigate();
 
-  useRequest(() => API.getImage({ user_name: userName }), {
+  useRequest(() => getImage({ user_name: userName }), {
     ready: !!userName,
-    onSuccess: (res: any) => {
-      dispatch(setFileName(res.data[0].photo));
+    onSuccess: (res) => {
+      dispatch(setFileName(res.data.data[0].photo));
     },
   });
 
   const onChangeTheme = useCallback(
-    (e: { key: string }) => {
+    (e: any) => {
       dispatch(changeTheme(e.key));
     },
     [dispatch],

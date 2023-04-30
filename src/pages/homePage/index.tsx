@@ -12,7 +12,7 @@ import ProgressCard from './components/progressCard';
 import Schedule from './components/schedule';
 import UserCard from './components/userCard';
 
-import API from '@/apis/user';
+import { getUser } from '@/apis/user';
 import { USER_INFO } from '@/config/constant.js';
 import './index.scss';
 
@@ -32,12 +32,12 @@ const HomePage = () => {
 
   useRequest(
     () =>
-      API.getUser({
+      getUser({
         user_name: userName,
       }),
     {
-      onSuccess: (res: Record<string, any>) => {
-        setCreateTime(res.data[0].createTime);
+      onSuccess: (res) => {
+        setCreateTime(res.data.data[0].createTime);
       },
     },
   );

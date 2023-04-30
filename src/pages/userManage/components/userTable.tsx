@@ -1,30 +1,24 @@
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Table, Image, Button, Popconfirm } from 'antd';
-import React, { useCallback, useMemo } from 'react';
-
-export interface Item {
-  user_name: string;
-  photo: string;
-  authority: string;
-  createTime: string;
-}
+import { memo, useCallback, useMemo } from 'react';
+import type { RowItem } from '@/apis/model/userModel';
 
 interface Modal {
   isModalVisible: boolean;
-  info: Item;
+  info: RowItem;
 }
 
 interface Props {
-  tableData: Item[];
+  tableData: RowItem[];
   onModal({ isModalVisible, info }: Modal): void;
-  onDelete(value: Item): void;
+  onDelete(value: RowItem): void;
 }
 
 const img_url = process.env.REACT_APP_IMG_URL;
 
 const UserTable: React.FC<Props> = ({ tableData, onModal, onDelete }) => {
   const onEdit = useCallback(
-    (params: any) => {
+    (params: RowItem) => {
       onModal({
         isModalVisible: true,
         info: params,
@@ -63,7 +57,7 @@ const UserTable: React.FC<Props> = ({ tableData, onModal, onDelete }) => {
         title: '操作',
         key: 'action',
         align: 'center',
-        render: (_: string, record: Item) => (
+        render: (_: string, record: RowItem) => (
           <>
             {record.authority === '1' ? (
               <Button type="text" className="blue" icon={<EditOutlined />} onClick={() => onEdit(record)}>
@@ -86,4 +80,4 @@ const UserTable: React.FC<Props> = ({ tableData, onModal, onDelete }) => {
   return <Table bordered columns={columns} dataSource={tableData} style={{ marginTop: 10 }} />;
 };
 
-export default React.memo(UserTable);
+export default memo(UserTable);

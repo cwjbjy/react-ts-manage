@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import BaseTable from '@/assets/images/menus/baseTable.png';
 import Chat from '@/assets/images/menus/chat.png';
 import Drag from '@/assets/images/menus/drag.png';
@@ -15,14 +13,11 @@ import Upload from '@/assets/images/menus/upload.png';
 
 import './config.scss';
 
-export interface MenusTypes {
-  label: string;
-  key: string;
-  icon?: ReactNode;
-  children?: MenusTypes[];
-}
+import type { MenuProps } from 'antd';
 
-export const menus: MenusTypes[] = [
+export type MenuItem = Required<MenuProps>['items'][number];
+
+export const menus: MenuItem[] = [
   {
     label: '系统首页',
     key: '/firstItem',

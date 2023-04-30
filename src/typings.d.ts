@@ -23,8 +23,10 @@ interface ModelData {
   series: number[];
 }
 
+type ThemeType = 'theme-gray' | 'theme-blue' | 'theme-black';
+
 declare interface EchartsProps {
-  theme: string;
+  theme: ThemeType;
   model?: ModelData;
 }
 

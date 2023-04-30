@@ -1,12 +1,12 @@
 import { Menu } from 'antd';
 import { memo, useEffect, useCallback, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-
-import { MenusTypes } from './config';
+import type { MenuProps } from 'antd';
+import { MenuItem } from './config';
 import './index.scss';
 
 interface Props {
-  menus: MenusTypes[];
+  menus: MenuItem[];
 }
 
 const rootSubmenuKeys = ['drag', 'flowChart'];
@@ -21,11 +21,11 @@ const Menus = ({ menus }: Props) => {
     setselectedKeys([location.pathname]);
   }, [location]);
 
-  const [openKeys, setOpenKeys] = useState<any[]>([]);
+  const [openKeys, setOpenKeys] = useState<string[]>([]);
 
-  const onOpenChange = (keys: any[]) => {
+  const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
-    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+    if (rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
       setOpenKeys(keys);
     } else {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
@@ -33,7 +33,7 @@ const Menus = ({ menus }: Props) => {
   };
 
   const onClick = useCallback(
-    (e: any) => {
+    (e: { key: string }) => {
       navigation(e.key);
     },
     [navigation],

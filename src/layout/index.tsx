@@ -25,7 +25,14 @@ const AppHome = () => {
 
   const newMenus = useMemo(() => {
     let authMenus = get<string[]>('menu');
-    return menus.filter((item) => authMenus && authMenus.includes(item.key.split('/')[1]));
+    return menus.filter((item) => {
+      if (authMenus) {
+        if (item && item.key) {
+          return authMenus.includes((item.key as string).split('/')[1]);
+        }
+      }
+      return [];
+    });
   }, []);
 
   if (!ls.get(ACCESS_TOKEN)) {

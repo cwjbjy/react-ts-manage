@@ -5,7 +5,7 @@ import * as ls from 'local-storage';
 import { useState, useMemo, useCallback } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 
-import API from '@/apis/user';
+import { getImage } from '@/apis/user';
 import { ACCESS_TOKEN } from '@/config/constant';
 import { USER_INFO } from '@/config/constant.js';
 import { setFileName } from '@/store/file';
@@ -32,10 +32,10 @@ const FileUp = () => {
   const [loading, setLoading] = useState(false);
 
   const userName = useMemo(() => ls.get<UserInfo>(USER_INFO).userName, []);
-  const { run } = useRequest(API.getImage, {
+  const { run } = useRequest(getImage, {
     manual: true,
-    onSuccess: (res: Record<string, any>) => {
-      dispatch(setFileName(res.data[0].photo));
+    onSuccess: (res) => {
+      dispatch(setFileName(res.data.data[0].photo));
     },
   });
 

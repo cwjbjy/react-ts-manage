@@ -6,7 +6,7 @@ import { Dispatch, useCallback, useEffect, useState, memo } from 'react';
 
 import { FormButton } from './form';
 
-import API from '@/apis/login';
+import { register } from '@/apis/user';
 import { CODE_EXIST } from '@/config/returnCodeMap';
 import { getTime } from '@/utils/comFunc';
 import './register.scss';
@@ -23,18 +23,17 @@ const icon = {
 const RegisterForm = ({ setUser, onRegister }: Props) => {
   const [verifyCode, set_verifyCode] = useState<{ validate: (params: string) => boolean }>();
 
-  const { run } = useRequest(API.register, {
+  const { run } = useRequest(register, {
     manual: true,
-    onSuccess: (data: Record<string, any>, params) => {
+    onSuccess: (data, params) => {
       setUser(
-        //@ts-ignore
         produce((draft: UserInfo) => {
           draft.userName = params[0].userName;
           draft.passWord = params[0].passWord;
         }),
       );
       message.success({
-        content: data.msg,
+        content: data.data.msg,
         className: 'custom-message',
       });
       onRegister({
@@ -57,7 +56,7 @@ const RegisterForm = ({ setUser, onRegister }: Props) => {
   }, []);
 
   const onFinish = useCallback(
-    (params: any) => {
+    (params: { authCode: string; reg_name: any; rge_pass: any }) => {
       if (params.authCode && verifyCode?.validate(params.authCode)) {
         const user = {
           userName: params.reg_name,

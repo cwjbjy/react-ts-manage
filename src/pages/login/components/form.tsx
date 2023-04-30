@@ -7,7 +7,7 @@ import { Dispatch, forwardRef, memo, useImperativeHandle } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import API from '@/apis/login';
+import { login } from '@/apis/user';
 import { USER_MENU, ACCESS_TOKEN } from '@/config/constant';
 import { CODE_NAME_PASS } from '@/config/returnCodeMap';
 
@@ -31,16 +31,15 @@ const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
 
   const [form] = Form.useForm();
 
-  const { run, loading } = useRequest(API.login, {
+  const { run, loading } = useRequest(login, {
     manual: true,
-    onSuccess: (data: Record<string, any>, params) => {
-      ls.set(ACCESS_TOKEN, data.data.token);
-      ls.set(USER_MENU, data.data.auth);
+    onSuccess: (data, params) => {
+      ls.set(ACCESS_TOKEN, data.data.data.token);
+      ls.set(USER_MENU, data.data.data.auth);
       setUser(
-        //@ts-ignore
         produce((draft: UserInfo) => {
-          draft.userName = params[0].get('userName');
-          draft.passWord = params[0].get('passWord');
+          draft.userName = params[0].get('userName') || '';
+          draft.passWord = params[0].get('passWord') || '';
         }),
       );
       navigation('/firstItem');
