@@ -1,11 +1,10 @@
 import { useRequest } from 'ahooks';
 import { Row, Col, Card } from 'antd';
 import { get } from 'local-storage';
-import { useContext, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useMemo, useState } from 'react';
+import { useAppSelector } from '@/store/hooks';
 import styled from 'styled-components';
 
-import ThemeContext from '../../layout/themeContext';
 import Bar from './components/bar';
 import BarLine from './components/barLine';
 import Message from './components/message';
@@ -15,7 +14,6 @@ import UserCard from './components/userCard';
 
 import API from '@/apis/user';
 import { USER_INFO } from '@/config/constant.js';
-import { RootState } from '@/store/storeTypes';
 import './index.scss';
 
 const barModel = {
@@ -24,9 +22,9 @@ const barModel = {
 };
 
 const HomePage = () => {
-  const { fileName } = useSelector((state: RootState) => state.file);
+  const { fileName } = useAppSelector((state) => state.file);
 
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useAppSelector((state) => state.theme);
 
   const [createTime, setCreateTime] = useState('');
 

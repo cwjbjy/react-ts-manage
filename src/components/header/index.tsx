@@ -1,14 +1,13 @@
 import { CaretDownOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Dropdown } from 'antd';
-import { memo, useContext, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { memo, useCallback } from 'react';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { setFileName } from '@/store/file';
+import { changeTheme } from '@/store/theme';
 import { useNavigate } from 'react-router-dom';
 
-import ThemeContext from '../../layout/themeContext';
-
 import API from '@/apis/user';
-import { SETFILENAME } from '@/store/file.js';
 import type { MenuProps } from 'antd';
 
 import './index.scss';
@@ -17,7 +16,7 @@ interface Props {
   userName: string;
 }
 
-const items: MenuProps['items'] = [
+const themes: MenuProps['items'] = [
   {
     key: 'theme-gray',
     label: '简约灰',
@@ -47,30 +46,27 @@ const list: MenuProps['items'] = [
   },
 ];
 
-const img_url = process.env.REACT_APP_IMG_URL;
-
 const Header = ({ userName }: Props) => {
-  const { changeTheme } = useContext(ThemeContext);
-  const { fileName } = useSelector((state: any) => state.file);
-  const dispatch = useDispatch();
+  const { fileName } = useAppSelector((state) => state.file);
+  const dispatch = useAppDispatch();
   const navigation = useNavigate();
 
   useRequest(() => API.getImage({ user_name: userName }), {
     ready: !!userName,
     onSuccess: (res: any) => {
-      dispatch(SETFILENAME(res.data[0].photo));
+      dispatch(setFileName(res.data[0].photo));
     },
   });
 
   const onChangeTheme = useCallback(
-    (e: any) => {
-      changeTheme(e.key);
+    (e: { key: string }) => {
+      dispatch(changeTheme(e.key));
     },
-    [changeTheme],
+    [dispatch],
   );
 
   const onUserClick = useCallback(
-    (e: any) => {
+    (e: { key: string }) => {
       if (e.key === '1') {
         navigation('/login');
       }
@@ -85,14 +81,16 @@ const Header = ({ userName }: Props) => {
       </div>
       <div className="header_right">
         <Dropdown
-          menu={{ items, selectable: true, onClick: onChangeTheme, defaultSelectedKeys: ['theme-gray'] }}
+          menu={{ items: themes, selectable: true, onClick: onChangeTheme, defaultSelectedKeys: ['theme-gray'] }}
           className="user-drop"
         >
           <i className="iconfont icon-zhuti_tiaosepan_o"></i>
         </Dropdown>
         <Dropdown menu={{ items: list, onClick: onUserClick }} className="user-drop">
           <div className="userImage">
-            {fileName && <img src={`${img_url}${fileName}`} className="user-img" alt="加载失败" />}
+            {fileName && (
+              <img src={`${process.env.REACT_APP_IMG_URL}${fileName}`} className="user-img" alt="加载失败" />
+            )}
             <span style={{ marginRight: 5 }}>
               <span style={{ marginRight: 2 }}>{userName}</span>
               <CaretDownOutlined />

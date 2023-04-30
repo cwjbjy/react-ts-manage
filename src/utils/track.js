@@ -1,4 +1,4 @@
-import { getTime, browserType } from './comFunc.js';
+import { getTime, browserType } from './comFunc';
 import { onRouterChange } from './onRouter';
 
 import API from '@/apis/user';

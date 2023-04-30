@@ -1,16 +1,14 @@
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Upload, message, Card } from 'antd';
-import { get } from 'local-storage';
 import * as ls from 'local-storage';
 import { useState, useMemo, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
 
 import API from '@/apis/user';
 import { ACCESS_TOKEN } from '@/config/constant';
 import { USER_INFO } from '@/config/constant.js';
-import { SETFILENAME } from '@/store/file.js';
-import { RootState } from '@/store/storeTypes';
+import { setFileName } from '@/store/file';
 import './index.scss';
 
 const baseURL = process.env.REACT_APP_AUTH_URL;
@@ -29,15 +27,15 @@ const beforeUpload = (file: File) => {
 };
 
 const FileUp = () => {
-  const { fileName } = useSelector((state: RootState) => state.file);
-  const dispatch = useDispatch();
+  const { fileName } = useAppSelector((state) => state.file);
+  const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
 
-  const userName = useMemo(() => get<UserInfo>(USER_INFO).userName, []);
+  const userName = useMemo(() => ls.get<UserInfo>(USER_INFO).userName, []);
   const { run } = useRequest(API.getImage, {
     manual: true,
     onSuccess: (res: Record<string, any>) => {
-      dispatch(SETFILENAME(res.data[0].photo));
+      dispatch(setFileName(res.data[0].photo));
     },
   });
 

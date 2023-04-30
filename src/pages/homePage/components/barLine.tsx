@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useCallback } from 'react';
 import { themeColor } from '@/constant/theme';
 import useResize from '@/hooks/useResize';
 
-const BarLine: React.FC<echartsProps> = ({ theme }) => {
+const BarLine = ({ theme }: EchartsProps) => {
   const echart = useRef(null);
 
   const initial = useCallback(() => {

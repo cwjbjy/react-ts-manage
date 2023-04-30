@@ -1,4 +1,4 @@
-import { useEffect, useRef, FC, memo } from 'react';
+import { useEffect, useRef, memo } from 'react';
 
 import { themeColor } from '@/constant/theme';
 import './index.scss';
@@ -49,7 +49,7 @@ const data = [
   ],
 ];
 
-const Scatter: FC<echartsProps> = ({ theme }) => {
+const Scatter = ({ theme }: EchartsProps) => {
   const echart = useRef(null);
 
   useResize(echart);

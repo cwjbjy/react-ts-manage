@@ -1,4 +1,4 @@
-import ls from 'local-storage';
+import * as ls from 'local-storage';
 
 import { ACCESS_TOKEN, USER_MENU } from '@/config/constant';
 

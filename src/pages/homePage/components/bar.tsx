@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import { memo, useEffect, useRef, useCallback } from 'react';
 
 import { themeColor } from '@/constant/theme';
 import useResize from '@/hooks/useResize';
 
-const Bar: React.FC<echartsProps> = ({ theme, model }) => {
+const Bar = ({ theme, model }: EchartsProps) => {
   const echart = useRef(null);
 
   const initial = useCallback(() => {
@@ -59,4 +59,4 @@ const Bar: React.FC<echartsProps> = ({ theme, model }) => {
   return <div ref={echart} className="myChart" style={{ height: 300 }}></div>;
 };
 
-export default React.memo(Bar);
+export default memo(Bar);

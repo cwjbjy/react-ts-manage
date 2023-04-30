@@ -8,7 +8,7 @@ import LoginOther from './components/third';
 import { Container, Header, Main, Form } from '@/components/layout/login.jsx';
 
 import { USER_INFO } from '@/config/constant.js';
-import clearInfo from '@/utils/clearInfo.js';
+import clearInfo from '@/utils/clearInfo';
 
 interface ForwardObject {
   login: (params: URLSearchParams) => void;

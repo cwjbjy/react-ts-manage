@@ -1,10 +1,10 @@
-import { useEffect, useRef, FC, memo } from 'react';
+import { useEffect, useRef, memo } from 'react';
 
 import { themeColor } from '@/constant/theme';
 import './index.scss';
 import useResize from '@/hooks/useResize';
 
-const Cylinder: FC<echartsProps> = ({ theme }) => {
+const Cylinder = ({ theme }: EchartsProps) => {
   const echart = useRef(null);
 
   useResize(echart);

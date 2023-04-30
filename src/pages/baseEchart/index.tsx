@@ -1,17 +1,15 @@
 import { Row, Col, Card } from 'antd';
-import { useContext } from 'react';
-
-import Bar from '../../components/baseEcharts/bar';
-import Cylinder from '../../components/baseEcharts/cylinder';
-import Line from '../../components/baseEcharts/line';
-import Pie from '../../components/baseEcharts/pie';
-import Scale from '../../components/baseEcharts/scale';
-import Scatter from '../../components/baseEcharts/scatter';
-import ThemeContext from '../../layout/themeContext';
+import Bar from '@/components/baseEcharts/bar';
+import Cylinder from '@/components/baseEcharts/cylinder';
+import Line from '@/components/baseEcharts/line';
+import Pie from '@/components/baseEcharts/pie';
+import Scale from '@/components/baseEcharts/scale';
+import Scatter from '@/components/baseEcharts/scatter';
+import { useAppSelector } from '@/store/hooks';
 import './index.scss';
 
 const Chart = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useAppSelector((state) => state.theme);
   return (
     <section>
       <Row className="chart">
