@@ -1,5 +1,6 @@
-import { message } from 'antd';
 import React, { useCallback } from 'react';
+
+import { message } from 'antd';
 
 import QQ from '@/assets/images/login/QQ.png';
 import WB from '@/assets/images/login/wb.png';

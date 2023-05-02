@@ -1,5 +1,6 @@
-import { Table, Tag, Card } from 'antd';
 import React from 'react';
+
+import { Table, Tag, Card } from 'antd';
 import './schedule.scss';
 
 const { Column } = Table;

@@ -1,5 +1,6 @@
-import { Card, Progress } from 'antd';
 import React from 'react';
+
+import { Card, Progress } from 'antd';
 import './progressCard.scss';
 
 const format = (percent: number | undefined) => {

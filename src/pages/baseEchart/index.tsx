@@ -1,10 +1,12 @@
 import { Row, Col, Card } from 'antd';
+
 import Bar from '@/components/baseEcharts/bar';
 import Cylinder from '@/components/baseEcharts/cylinder';
 import Line from '@/components/baseEcharts/line';
 import Pie from '@/components/baseEcharts/pie';
 import Scale from '@/components/baseEcharts/scale';
 import Scatter from '@/components/baseEcharts/scatter';
+
 import { useAppSelector } from '@/store/hooks';
 import './index.scss';
 

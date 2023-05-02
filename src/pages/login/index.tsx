@@ -1,14 +1,17 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+
 import { useLocalStorageState, useTitle } from 'ahooks';
 import cn from 'classnames';
-import { useCallback, useEffect, useRef, useState } from 'react';
+
+import { Container, Header, Main, Form } from '@/components/layout/login';
 
 import LoginForm from './components/form';
 import RegisterForm from './components/register';
 import LoginOther from './components/third';
-import { Container, Header, Main, Form } from '@/components/layout/login';
+
+import clearInfo from '@/utils/clearInfo';
 
 import { USER_INFO } from '@/config/constant';
-import clearInfo from '@/utils/clearInfo';
 
 interface ForwardObject {
   login: (params: URLSearchParams) => void;

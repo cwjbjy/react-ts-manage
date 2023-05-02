@@ -1,6 +1,7 @@
-import { Card } from 'antd';
 import { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
+
+import { Card } from 'antd';
 
 import Column from './components/column';
 import initialData from './components/todoData';

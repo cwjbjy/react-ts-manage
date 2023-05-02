@@ -1,14 +1,17 @@
+import { Dispatch, useCallback, useEffect, useState, memo } from 'react';
+
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Form, Input, message } from 'antd';
 import { produce } from 'immer';
-import { Dispatch, useCallback, useEffect, useState, memo } from 'react';
 
 import { FormButton } from './form';
 
-import { register } from '@/apis/user';
-import { CODE_EXIST } from '@/config/returnCodeMap';
 import { getTime } from '@/utils/comFunc';
+
+import { register } from '@/apis/user';
+
+import { CODE_EXIST } from '@/config/returnCodeMap';
 import './register.scss';
 
 interface Props {

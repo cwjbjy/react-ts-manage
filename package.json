@@ -39,7 +39,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "lint": "eslint src --fix --ext .ts,.tsx,.js,.jsx --max-warnings 0"
   },
   "husky": {
     "hooks": {
@@ -58,7 +59,59 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "plugins": [
+      "import"
+    ],
+    "rules": {
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            [
+              "parent",
+              "sibling",
+              "index"
+            ],
+            "object",
+            "type"
+          ],
+          "pathGroups": [
+            {
+              "pattern": "react*",
+              "group": "builtin",
+              "position": "before"
+            },
+            {
+              "pattern": "@/components/**",
+              "group": "parent",
+              "position": "before"
+            },
+            {
+              "pattern": "@/utils/**",
+              "group": "parent",
+              "position": "after"
+            },
+            {
+              "pattern": "@/apis/**",
+              "group": "parent",
+              "position": "after"
+            }
+          ],
+          "pathGroupsExcludedImportTypes": [
+            "react"
+          ],
+          "newlines-between": "always",
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -78,6 +131,7 @@
     "babel-plugin-import": "^1.13.6",
     "craco-sass-resources-loader": "^1.1.0",
     "cross-env": "^7.0.3",
+    "eslint-plugin-import": "^2.27.5",
     "husky": "4.3.8",
     "lint-staged": "^13.2.2",
     "minimist": "^1.2.8",

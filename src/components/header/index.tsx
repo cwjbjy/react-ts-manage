@@ -1,14 +1,17 @@
+import { memo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { CaretDownOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Dropdown } from 'antd';
-import { memo, useCallback } from 'react';
-import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { setFileName } from '@/store/file';
-import { changeTheme } from '@/store/theme';
-import { useNavigate } from 'react-router-dom';
 
 import { getImage } from '@/apis/user';
+
 import type { MenuProps } from 'antd';
+
+import { setFileName } from '@/store/file';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { changeTheme } from '@/store/theme';
 
 import './index.scss';
 

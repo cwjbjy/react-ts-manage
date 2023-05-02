@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { ACCESS_TOKEN } from '@/config/constant';
 import * as ls from 'local-storage';
+
+import { ACCESS_TOKEN } from '@/config/constant';
 /*
  * 创建实例
  * 与后端服务通信

@@ -1,4 +1,5 @@
 import HttpClient from '@/utils/axios';
+
 import type {
   RegisterParams,
   UserIdParams,

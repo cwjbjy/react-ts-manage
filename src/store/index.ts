@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import file from './file';
 import theme from './theme';
 

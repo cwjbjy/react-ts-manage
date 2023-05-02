@@ -1,13 +1,15 @@
+import { useCallback, useState, useMemo } from 'react';
+
 import { useRequest } from 'ahooks';
 import { Card, Modal, message, Spin } from 'antd';
 import * as ls from 'local-storage';
-import { useCallback, useState, useMemo } from 'react';
 
 import PassChange from './components/passChange';
 import UserTable from './components/userTable';
 
-import { user, updateUser, deleteUser } from '@/apis/user';
 import type { RowItem } from '@/apis/model/userModel';
+import { user, updateUser, deleteUser } from '@/apis/user';
+
 import { USER_INFO } from '@/config/constant';
 import './index.scss';
 

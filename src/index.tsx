@@ -1,13 +1,15 @@
-import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
-
 import 'antd/dist/reset.css';
 import './assets/icon/iconfont.css';
 
-import { Provider } from 'react-redux';
 import { Suspense } from 'react';
+import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
+
+import ReactDOM from 'react-dom/client';
+
 import FullScreenLoading from '@/components/layout/loading';
+
+import reportWebVitals from './reportWebVitals';
 import router from './router';
 import store from './store';
 

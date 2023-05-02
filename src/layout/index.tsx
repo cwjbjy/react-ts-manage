@@ -1,18 +1,21 @@
+import { useMemo, useRef } from 'react';
+import { Suspense } from 'react';
+import { Outlet, Navigate } from 'react-router-dom';
+
 import { useTitle } from 'ahooks';
 import { FloatButton } from 'antd';
 import { get } from 'local-storage';
 import * as ls from 'local-storage';
-import { useMemo, useRef } from 'react';
+
+import FullScreenLoading from '@/components/layout/loading';
 
 import Header from '../components/header/index';
 import { menus } from '../components/menus/config';
 import Menus from '../components/menus/index';
-import FullScreenLoading from '@/components/layout/loading';
 import Global from '../global/index';
-import { Suspense } from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
-import { useAppSelector } from '@/store/hooks';
+
 import { ACCESS_TOKEN } from '@/config/constant';
+import { useAppSelector } from '@/store/hooks';
 
 import './index.scss';
 

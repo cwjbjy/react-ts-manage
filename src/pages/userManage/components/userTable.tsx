@@ -1,6 +1,8 @@
+import { memo, useCallback, useMemo } from 'react';
+
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Table, Image, Button, Popconfirm } from 'antd';
-import { memo, useCallback, useMemo } from 'react';
+
 import type { RowItem } from '@/apis/model/userModel';
 
 interface Modal {

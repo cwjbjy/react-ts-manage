@@ -1,6 +1,7 @@
+import React from 'react';
+
 import { UserOutlined, NotificationOutlined, FileDoneOutlined } from '@ant-design/icons';
 import { Row, Col, Card } from 'antd';
-import React from 'react';
 import './message.scss';
 
 const Message = () => {

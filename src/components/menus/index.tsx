@@ -1,8 +1,12 @@
-import { Menu } from 'antd';
 import { memo, useEffect, useCallback, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import type { MenuProps } from 'antd';
+
+import { Menu } from 'antd';
+
 import { MenuItem } from './config';
+
+import type { MenuProps } from 'antd';
+
 import './index.scss';
 
 interface Props {

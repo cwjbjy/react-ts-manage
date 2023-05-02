@@ -1,5 +1,6 @@
-import { Card, Row, Col } from 'antd';
 import { memo } from 'react';
+
+import { Card, Row, Col } from 'antd';
 import './userCard.scss';
 interface Props {
   userName: string;

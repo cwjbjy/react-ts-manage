@@ -1,5 +1,6 @@
-import { Card } from 'antd';
 import { useEffect } from 'react';
+
+import { Card } from 'antd';
 
 import Deer from '@/assets/images/magnifying/deer.jpg';
 import './index.scss';

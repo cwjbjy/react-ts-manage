@@ -1,14 +1,16 @@
+import { useState, useMemo, useCallback } from 'react';
+
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Upload, message, Card } from 'antd';
 import * as ls from 'local-storage';
-import { useState, useMemo, useCallback } from 'react';
-import { useAppSelector, useAppDispatch } from '@/store/hooks';
 
 import { getImage } from '@/apis/user';
+
 import { ACCESS_TOKEN } from '@/config/constant';
 import { USER_INFO } from '@/config/constant';
 import { setFileName } from '@/store/file';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import './index.scss';
 
 const baseURL = process.env.REACT_APP_AUTH_URL;
