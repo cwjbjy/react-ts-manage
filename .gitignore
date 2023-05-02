@@ -10,6 +10,8 @@
 
 # production
 /build
+/react-manage
+/react-manage.zip
 
 # misc
 .DS_Store

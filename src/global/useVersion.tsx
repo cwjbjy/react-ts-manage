@@ -68,8 +68,8 @@ const useVersion = () => {
     getHash();
     timer.current = setInterval(() => {
       getHash();
-      // 10分钟检测一次
-    }, 5000);
+      // 1h检测一次
+    }, 3600000);
     return () => {
       clearInterval(timer.current);
     };
