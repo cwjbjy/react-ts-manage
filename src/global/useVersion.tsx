@@ -62,7 +62,7 @@ const useVersion = () => {
         }
       });
     }
-  }, [openNotification, uploadNotificationShow]);
+  }, [openNotification]);
 
   useEffect(() => {
     getHash();
