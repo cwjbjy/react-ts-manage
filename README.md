@@ -1,6 +1,18 @@
 # 技术栈
 
-React+Typescript+Antd+Webpack5
+js框架：react 
+
+UI框架：antD 
+
+数据可视化工具：echarts 
+
+状态管理：react-redux，@reduxjs/toolkit
+
+路由：react-router-dom6 
+
+通信：axios
+
+css处理器：scss
 
 ## 老版项目地址
 
