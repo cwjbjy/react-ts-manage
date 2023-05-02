@@ -14,6 +14,8 @@ UI框架：antD
 
 css处理器：scss
 
+打包工具：wepack5
+
 ## 老版项目地址
 
 https://github.com/cwjbjy/react-management
