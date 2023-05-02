@@ -1,5 +1,5 @@
 import useAnalysis from './useAnalysis.js';
-import useVersion from './useVersion.js';
+import useVersion from './useVersion';
 
 export default function Global() {
   useVersion(); //版本更新提示

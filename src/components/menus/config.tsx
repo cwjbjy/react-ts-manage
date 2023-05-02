@@ -1,3 +1,5 @@
+import type { MenuProps } from 'antd';
+
 import BaseTable from '@/assets/images/menus/baseTable.png';
 import Chat from '@/assets/images/menus/chat.png';
 import Drag from '@/assets/images/menus/drag.png';
@@ -12,8 +14,6 @@ import Pdf from '@/assets/images/menus/pdf.png';
 import Upload from '@/assets/images/menus/upload.png';
 
 import './config.scss';
-
-import type { MenuProps } from 'antd';
 
 export type MenuItem = Required<MenuProps>['items'][number];
 
