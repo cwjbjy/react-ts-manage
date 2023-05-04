@@ -1,10 +1,13 @@
-import { getTime, browserType } from './comFunc';
+import Bowser from 'bowser';
+
+import { getTime } from './comFunc';
 import { onRouterChange } from './onRouter';
 
 import { trackWeb } from '@/apis/user';
 class Track {
   constructor() {
     this.info = {};
+    this.browser = Bowser.getParser(window.navigator.userAgent).getBrowserName();
   }
   start() {
     if (this.started) {
@@ -13,7 +16,7 @@ class Track {
     this.started = true;
     this.addProperties({
       vs: 'react-manage',
-      deviceType: browserType(), //获取设备类型
+      deviceType: this.browser,
       url: window.location.href,
       referer: document.referrer,
     });
