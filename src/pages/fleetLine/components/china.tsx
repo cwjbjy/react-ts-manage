@@ -1,11 +1,12 @@
 import { useEffect, useRef, useCallback } from 'react';
 
-import { geoCoordMap, apiData } from '../../../constant/map';
+import type { ApiData } from '@/constant/map';
 
-const buildLines = function (data, geoCoordMap) {
+import { geoCoordMap, apiData } from '@/constant/map';
+
+const buildLines = function (data: ApiData, geoCoordMap: Record<any, number[]>) {
   var planePath =
     'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
-  let arr = [];
   var color = [
     '#eccc68',
     '#ff7f50',
@@ -20,46 +21,43 @@ const buildLines = function (data, geoCoordMap) {
     '#1e90ff',
     '#3742fa',
   ]; //航线的颜色
-  data.forEach((item, index) => {
-    arr.push({
-      name: item.airName,
-      type: 'lines',
-      zlevel: index + 3,
-      symbol: ['none', 'arrow'],
-      symbolSize: 10,
-      label: {
-        show: false,
+  return data.map((item, index) => ({
+    name: item.airName,
+    type: 'lines',
+    zlevel: index + 3,
+    symbol: ['none', 'arrow'],
+    symbolSize: 10,
+    label: {
+      show: false,
+    },
+    effect: {
+      show: true,
+      period: item.speed, //动画时间
+      trailLength: 0.1, //给飞机尾部加特效
+      symbol: planePath,
+      symbolSize: 15,
+      delay: item.delay,
+    },
+    lineStyle: {
+      normal: {
+        color: color[index],
+        width: 2,
+        opacity: 0.5,
+        curveness: 0.2, //曲度
       },
-      effect: {
-        show: true,
-        period: item.speed, //动画时间
-        trailLength: 0.1, //给飞机尾部加特效
-        symbol: planePath,
-        symbolSize: 15,
-        delay: item.delay,
+    },
+    data: [
+      {
+        name: item.airName,
+        fromName: item.fromName,
+        toName: item.toName,
+        coords: [geoCoordMap[item.fromName], geoCoordMap[item.toName]],
       },
-      lineStyle: {
-        normal: {
-          color: color[index],
-          width: 2,
-          opacity: 0.5,
-          curveness: 0.2, //曲度
-        },
-      },
-      data: [
-        {
-          name: item.airName,
-          fromName: item.fromName,
-          toName: item.toName,
-          coords: [geoCoordMap[item.fromName], geoCoordMap[item.toName]],
-        },
-      ],
-    });
-  });
-  return arr;
+    ],
+  }));
 };
 
-const convertData = function (data) {
+const convertData = function (data: ApiData) {
   var res = [];
   for (let i = 0, len = data.length; i < len; i++) {
     var geoCoord = geoCoordMap[data[i].fromName];
@@ -141,7 +139,7 @@ const FleetModel = () => {
           //coordinateSystem:"geo"只会取数组的前两位当做点坐标数据
           data: convertData(apiData),
           //其中第一个参数 value 为 data 中的数据值。第二个参数params 是其它的数据项参数
-          symbolSize: function (value) {
+          symbolSize: function (value: number[]) {
             return value[2] / 10;
           },
         },
@@ -173,7 +171,7 @@ const FleetModel = () => {
           hoverAnimation: true,
           showEffectOn: 'render', //绘制完成后显示特效
           data: convertData(apiData),
-          symbolSize: function (value) {
+          symbolSize: function (value: number[]) {
             return value[2] / 10;
           },
         },

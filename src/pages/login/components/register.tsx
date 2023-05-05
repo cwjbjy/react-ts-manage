@@ -59,7 +59,7 @@ const RegisterForm = ({ setUser, onRegister }: Props) => {
   }, []);
 
   const onFinish = useCallback(
-    (params: { authCode: string; reg_name: any; rge_pass: any }) => {
+    (params: { authCode: string; reg_name: string; rge_pass: string }) => {
       if (params.authCode && verifyCode?.validate(params.authCode)) {
         const user = {
           userName: params.reg_name,

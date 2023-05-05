@@ -247,7 +247,7 @@ const nodeDataArray = [
 
 const PositionChart = () => {
   const status = useExternal('/static/go.js');
-  const myDiagram = useRef(null);
+  const myDiagram = useRef<any>(null);
   const dealShow = () => {
     var $ = window.go.GraphObject.make; // for conciseness in defining templates
     // some constants that will be reused within templates
@@ -308,7 +308,7 @@ const PositionChart = () => {
         'RoundedRectangle',
         { fill: '#ffffff', strokeWidth: 0 },
         // 搜索时，被搜索到就变色
-        new window.go.Binding('fill', 'isHighlighted', function (h) {
+        new window.go.Binding('fill', 'isHighlighted', function (h: any) {
           return h ? '#409eff' : '#ffffff';
         }).ofObject(),
       ),
@@ -379,7 +379,7 @@ const PositionChart = () => {
           $(
             window.go.TextBlock,
             textStyle(),
-            new window.go.Binding('text', 'headOf', function (head) {
+            new window.go.Binding('text', 'headOf', function (head: string) {
               return '' + head;
             }),
             new window.go.Binding('margin', 'headOf', function () {
@@ -419,7 +419,7 @@ const PositionChart = () => {
     ); // tell it which Diagram to show and pan
   };
   const searchDiagram = () => {
-    var input = document.getElementById('mySearch');
+    var input = document.getElementById('mySearch') as any;
     if (!input) return;
     input.focus();
 
@@ -439,8 +439,8 @@ const PositionChart = () => {
   useEffect(() => {
     if (status === 'ready') {
       dealShow();
-      let doc = document.querySelector('#myDiagramDiv').lastElementChild;
-      let str = doc.getAttribute('style');
+      let doc = document.querySelector('#myDiagramDiv')?.lastElementChild!;
+      let str = doc.getAttribute('style')!;
       str = str.replace('overflow: auto', 'overflow: hidden');
       doc.setAttribute('style', str);
     }

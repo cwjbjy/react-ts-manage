@@ -133,7 +133,7 @@ const Scatter = ({ theme }: EchartsProps) => {
           name: '1990',
           data: data[0],
           type: 'scatter',
-          symbolSize: function (data: any) {
+          symbolSize: function (data: number[]) {
             return Math.sqrt(data[2]) / 5e2;
           },
           emphasis: {
@@ -165,7 +165,7 @@ const Scatter = ({ theme }: EchartsProps) => {
           name: '2015',
           data: data[1],
           type: 'scatter',
-          symbolSize: function (data: any) {
+          symbolSize: function (data: number[]) {
             return Math.sqrt(data[2]) / 5e2;
           },
           emphasis: {

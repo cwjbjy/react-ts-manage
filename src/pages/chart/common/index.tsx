@@ -33,7 +33,7 @@ const CommonChart = () => {
     });
     myDiagram.addDiagramListener('ObjectSingleClicked', function () {});
     //上颜色
-    function colorBrushConverter(color) {
+    function colorBrushConverter(color: string) {
       if (color) return color;
       return 'orange';
     }

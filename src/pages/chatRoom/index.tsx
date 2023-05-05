@@ -9,7 +9,7 @@ import insService from '@/utils/websocket';
 
 import showImage from '@/assets/images/chartRoom/chatShowV2.0.png';
 import rootImage from '@/assets/images/chartRoom/root.png';
-import { bus } from '@/constant/bus.js';
+import { bus } from '@/constant/bus';
 import { useAppSelector } from '@/store/hooks';
 import './index.scss';
 interface Item {

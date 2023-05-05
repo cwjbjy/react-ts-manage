@@ -1,4 +1,4 @@
-export const geoCoordMap = {
+export const geoCoordMap: Record<any, number[]> = {
   上海: [121.4648, 31.2891],
   东莞: [113.8953, 22.901],
   东营: [118.7073, 37.5513],
@@ -181,3 +181,14 @@ export const apiData = [
     speed: 200,
   },
 ];
+
+export interface Item {
+  airName: string;
+  fromName: string;
+  toName: string;
+  delay: number;
+  value: number;
+  speed: number;
+}
+
+export type ApiData = Item[];

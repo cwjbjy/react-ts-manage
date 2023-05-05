@@ -24,7 +24,7 @@ const AppHome = () => {
   const overFlowRef = useRef(null);
 
   const { theme } = useAppSelector((state) => state.theme);
-  const userName = useMemo(() => get<UserInfo>('userInfo').userName, []);
+  const userName = useMemo(() => get<UserInfo>('userInfo')?.userName, []);
 
   const newMenus = useMemo(() => {
     let authMenus = get<string[]>('menu');

@@ -9,12 +9,6 @@ const splitChunks = () => {
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       cacheGroups: {
-        "text-encoding": {
-          chunks: "async",
-          test: /[\\/]node_modules[\\/]text-encoding[\\/]/,
-          name: "text-encoding.vendor",
-          priority: 40,
-        },
         pako: {
           chunks: "async",
           test: /[\\/]node_modules[\\/]pako[\\/]/,

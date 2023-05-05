@@ -1,6 +1,6 @@
 import PubSub from 'pubsub-js';
 
-import { bus } from '@/constant/bus.js';
+import { bus } from '@/constant/bus';
 
 export interface User {
   type: string;

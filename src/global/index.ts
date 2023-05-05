@@ -1,4 +1,4 @@
-import useAnalysis from './useAnalysis.js';
+import useAnalysis from './useAnalysis';
 import useVersion from './useVersion';
 
 export default function Global() {

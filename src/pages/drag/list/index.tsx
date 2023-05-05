@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import { Card } from 'antd';
@@ -7,10 +7,10 @@ import Column from './components/column';
 import initialData from './components/todoData';
 import './index.scss';
 
-export default class ReactBeautifulTodo extends Component {
-  state = initialData;
+const ReactBeautifulTodo = () => {
+  const [state, setState] = useState<any>(initialData);
 
-  onDragEnd = (result) => {
+  const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
 
     if (!destination) {
@@ -21,8 +21,8 @@ export default class ReactBeautifulTodo extends Component {
       return;
     }
 
-    const start = this.state.columns[source.droppableId];
-    const finish = this.state.columns[destination.droppableId];
+    const start = state.columns[source.droppableId];
+    const finish = state.columns[destination.droppableId];
 
     if (start === finish) {
       const newTaskIds = Array.from(start.taskIds);
@@ -35,14 +35,13 @@ export default class ReactBeautifulTodo extends Component {
       };
 
       const newState = {
-        ...this.state,
+        ...state,
         columns: {
-          ...this.state.columns,
+          ...state.columns,
           [newColumn.id]: newColumn,
         },
       };
-
-      this.setState(newState);
+      setState(newState);
       return;
     }
 
@@ -61,32 +60,32 @@ export default class ReactBeautifulTodo extends Component {
     };
 
     const newState = {
-      ...this.state,
+      ...state,
       columns: {
-        ...this.state.columns,
+        ...state.columns,
         [newStart.id]: newStart,
         [newFinish.id]: newFinish,
       },
     };
-    this.setState(newState);
+    setState(newState);
   };
 
-  render() {
-    return (
-      <section>
-        <Card hoverable title={<strong>可通过拖拽进行分组与排序;暂不支持IE</strong>}>
-          <DragDropContext onDragEnd={this.onDragEnd}>
-            <div className="content">
-              {this.state.columnOrder.map((columnId) => {
-                const column = this.state.columns[columnId];
-                const tasks = column.taskIds.map((taskId) => this.state.tasks[taskId]);
+  return (
+    <section>
+      <Card hoverable title={<strong>可通过拖拽进行分组与排序;暂不支持IE</strong>}>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <div className="content">
+            {state.columnOrder.map((columnId: string) => {
+              const column = state.columns[columnId];
+              const tasks = column.taskIds.map((taskId: string) => state.tasks[taskId]);
 
-                return <Column key={column.id} column={column} tasks={tasks} />;
-              })}
-            </div>
-          </DragDropContext>
-        </Card>
-      </section>
-    );
-  }
-}
+              return <Column key={column.id} column={column} tasks={tasks} />;
+            })}
+          </div>
+        </DragDropContext>
+      </Card>
+    </section>
+  );
+};
+
+export default ReactBeautifulTodo;
