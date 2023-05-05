@@ -20,18 +20,15 @@
     "immer": "^10.0.1",
     "local-storage": "^2.0.0",
     "lodash": "^4.17.21",
-    "node-sass": "6.0.1",
     "pubsub-js": "^1.9.4",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.2.2",
-    "react-loadable": "^5.5.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5",
-    "sass-resources-loader": "^2.2.5",
     "styled-components": "^5.3.10",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -137,6 +134,7 @@
     "lint-staged": "^13.2.2",
     "minimist": "^1.2.8",
     "prettier": "^2.8.8",
+    "sass": "^1.62.1",
     "webpack-bundle-analyzer": "^4.8.0",
     "webpackbar": "^5.0.2"
   }
