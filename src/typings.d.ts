@@ -10,7 +10,6 @@ declare interface Window {
 
 declare module 'react-i18next';
 declare module 'i18next';
-declare module 'pubsub-js';
 declare module 'react-beautiful-dnd';
 
 declare interface UserInfo {

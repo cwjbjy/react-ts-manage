@@ -124,6 +124,7 @@
     ]
   },
   "devDependencies": {
+    "@types/pubsub-js": "^1.8.3",
     "@types/styled-components": "^5.1.26",
     "@types/webpack-env": "^1.18.0",
     "babel-plugin-import": "^1.13.6",
