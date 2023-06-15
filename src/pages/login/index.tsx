@@ -35,7 +35,7 @@ const Login = () => {
     setFlag((prev) => !prev);
   }, []);
 
-  const onRegister = useCallback((params: any) => {
+  const onRegister = useCallback((params: { userName: string; passWord: string }) => {
     let formData = new URLSearchParams();
     formData.append('userName', params.userName);
     formData.append('passWord', params.passWord);

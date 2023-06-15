@@ -3,7 +3,7 @@ import { Dispatch, useCallback, useEffect, useState, memo } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Form, Input, message } from 'antd';
-import { produce } from 'immer';
+import CryptoJS from 'crypto-es';
 
 import { FormButton } from './form';
 
@@ -25,16 +25,12 @@ const icon = {
 
 const RegisterForm = ({ setUser, onRegister }: Props) => {
   const [verifyCode, set_verifyCode] = useState<{ validate: (params: string) => boolean }>();
+  const [userInfo, setUserInfo] = useState({ userName: '', passWord: '' });
 
   const { run } = useRequest(register, {
     manual: true,
     onSuccess: (data, params) => {
-      setUser(
-        produce((draft: UserInfo) => {
-          draft.userName = params[0].userName;
-          draft.passWord = params[0].passWord;
-        }),
-      );
+      setUser(userInfo);
       message.success({
         content: data.data.msg,
         className: 'custom-message',
@@ -63,11 +59,12 @@ const RegisterForm = ({ setUser, onRegister }: Props) => {
       if (params.authCode && verifyCode?.validate(params.authCode)) {
         const user = {
           userName: params.reg_name,
-          passWord: params.rge_pass,
+          passWord: CryptoJS.MD5(params.rge_pass).toString(),
           authority: 2,
           createTime: getTime(),
           photo: 'userlogo.png',
         };
+        setUserInfo({ userName: params.reg_name, passWord: params.rge_pass });
         run(user);
       } else {
         message.error({

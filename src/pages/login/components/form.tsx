@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useRequest, useKeyPress } from 'ahooks';
 import { Form, Input, Button } from 'antd';
-import { produce } from 'immer';
+import CryptoJS from 'crypto-es';
 import * as ls from 'local-storage';
 import styled from 'styled-components';
 
@@ -38,12 +38,6 @@ const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
     onSuccess: (data, params) => {
       ls.set(ACCESS_TOKEN, data.data.data.token);
       ls.set(USER_MENU, data.data.data.auth);
-      setUser(
-        produce((draft: UserInfo) => {
-          draft.userName = params[0].get('userName') || '';
-          draft.passWord = params[0].get('passWord') || '';
-        }),
-      );
       navigation('/firstItem');
     },
     onError: (error: Record<string, any>) => {
@@ -65,9 +59,11 @@ const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
   });
 
   const onFinish = (params: UserInfo) => {
+    const { userName, passWord } = params;
     let formData = new URLSearchParams();
-    formData.append('userName', params.userName);
-    formData.append('passWord', params.passWord);
+    formData.append('userName', userName);
+    formData.append('passWord', CryptoJS.MD5(passWord).toString());
+    setUser(params);
     run(formData);
   };
 
