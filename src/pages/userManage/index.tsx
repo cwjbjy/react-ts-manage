@@ -2,6 +2,7 @@ import { useCallback, useState, useMemo } from 'react';
 
 import { useRequest } from 'ahooks';
 import { Card, Modal, message, Spin } from 'antd';
+import CryptoJS from 'crypto-es';
 import * as ls from 'local-storage';
 
 import PassChange from './components/passChange';
@@ -12,7 +13,6 @@ import { user, updateUser, deleteUser } from '@/apis/user';
 
 import { USER_INFO } from '@/config/constant';
 import './index.scss';
-
 interface Info {
   id: number;
   user_name: string;
@@ -52,8 +52,8 @@ const UserManage = () => {
         content: '密码修改成功',
       });
       ls.set(USER_INFO, {
-        userName: params[0].user_name,
-        passWord: params[0].password,
+        userName: info.user_name,
+        passWord: password,
         flag: true,
       });
     },
@@ -79,12 +79,11 @@ const UserManage = () => {
 
   const handleOk = useCallback(() => {
     let { id, user_name } = info;
-    const params = {
+    handleUpdate({
       id,
       user_name,
-      password,
-    };
-    handleUpdate(params);
+      password: CryptoJS.MD5(password).toString(),
+    });
     setModal(false);
   }, [handleUpdate, info, password]);
 
