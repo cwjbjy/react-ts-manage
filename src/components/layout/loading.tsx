@@ -6,7 +6,7 @@ import { center } from './flex';
 const FullScreenLoading = () => {
   return (
     <FullScreen>
-      <Spin tip="Loading..." delay={1000} size="large" />
+      <Spin delay={1000} size="large" />
     </FullScreen>
   );
 };

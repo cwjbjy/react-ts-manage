@@ -20,7 +20,7 @@ interface ForwardObject {
 const Login = () => {
   useTitle('登录');
 
-  const [userInfo, setUser] = useLocalStorageState(USER_INFO, {
+  const [userInfo, setUser] = useLocalStorageState<any>(USER_INFO, {
     defaultValue: { userName: '一叶扁舟', passWord: '123456zx' },
   });
 

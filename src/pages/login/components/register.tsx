@@ -77,7 +77,7 @@ const RegisterForm = ({ setUser, onRegister }: Props) => {
   );
 
   return (
-    <Form name="basic" size="large" onFinish={onFinish}>
+    <Form name="register" size="large" onFinish={onFinish}>
       <Form.Item
         name="reg_name"
         rules={[

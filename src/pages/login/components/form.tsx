@@ -72,7 +72,7 @@ const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
   });
 
   return (
-    <Form name="basic" initialValues={userInfo} size="large" form={form} onFinish={onFinish}>
+    <Form name="login" initialValues={userInfo} size="large" form={form} onFinish={onFinish}>
       <Form.Item
         name="userName"
         rules={[
