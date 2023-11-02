@@ -1,14 +1,17 @@
 import { useEffect, RefObject } from 'react';
 
+import { debounce } from '@/utils/share';
+
 export default function useResize(echartRef: RefObject<HTMLDivElement>) {
-  const autoSize = () => {
+  const debounceAutoSize = debounce(() => {
     let echartsInstance = window.echarts.getInstanceByDom(echartRef.current);
     echartsInstance && echartsInstance.resize();
-  };
+  }, 300);
+
   useEffect(() => {
-    window.addEventListener('resize', autoSize, false);
+    window.addEventListener('resize', debounceAutoSize, false);
     return () => {
-      window.removeEventListener('resize', autoSize, false);
+      window.removeEventListener('resize', debounceAutoSize, false);
     };
   });
 }

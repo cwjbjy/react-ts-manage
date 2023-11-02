@@ -2,19 +2,20 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useLocalStorageState, useTitle } from 'ahooks';
 import cn from 'classnames';
+import * as ls from 'local-storage';
+import styled from 'styled-components';
 
-import { Container, Header, Main, Form } from '@/components/layout/login';
-
-import LoginForm from './components/form';
+import LoginForm from './components/login';
 import RegisterForm from './components/register';
 import LoginOther from './components/third';
 
-import clearInfo from '@/utils/clearInfo';
+import type { UserInfo } from '@/types';
 
-import { USER_INFO } from '@/config/constant';
+import { ACCESS_TOKEN, USER_MENU } from '@/constant/config';
+import { USER_INFO } from '@/constant/config';
 
 interface ForwardObject {
-  login: (params: URLSearchParams) => void;
+  login: (params: UserInfo) => void;
 }
 
 const Login = () => {
@@ -28,18 +29,19 @@ const Login = () => {
   const loginRef = useRef<ForwardObject>();
 
   useEffect(() => {
-    clearInfo();
+    ls.remove(ACCESS_TOKEN); //清除token
+    ls.remove(USER_MENU); //清除菜单栏
   }, []);
 
   const onTab = useCallback(() => {
     setFlag((prev) => !prev);
   }, []);
 
-  const onRegister = useCallback((params: { userName: string; passWord: string }) => {
-    let formData = new URLSearchParams();
-    formData.append('userName', params.userName);
-    formData.append('passWord', params.passWord);
-    loginRef.current?.login(formData);
+  const onRegister = useCallback((params: UserInfo) => {
+    loginRef.current?.login({
+      userName: params.userName,
+      passWord: params.passWord,
+    });
   }, []);
 
   return (
@@ -69,3 +71,67 @@ const Login = () => {
 };
 
 export default Login;
+
+export const Container = styled.div`
+  height: 100vh;
+  width: 100%;
+  background: rgba(25, 202, 173, 1);
+  /* 解决谷歌记住密码后的默认样式 */
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.85); /*字体颜色*/
+  }
+`;
+
+export const Header = styled.header`
+  font-size: 50px;
+  letter-spacing: 5px;
+  height: 20vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Main = styled.main`
+  width: 100%;
+  min-height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Form = styled.div`
+  width: 400px;
+  min-height: 370px;
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  box-sizing: border-box;
+  .tab {
+    width: 190px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    .tab_title {
+      display: inline-block;
+      flex: 1;
+      height: 38px;
+      line-height: 38px;
+      text-align: center;
+      font-size: 16px;
+      color: #999;
+      cursor: pointer;
+      &:hover {
+        color: #0078dc;
+      }
+    }
+    .title_active {
+      color: #0078dc;
+      border-bottom: 2px solid #0078dc;
+    }
+  }
+`;

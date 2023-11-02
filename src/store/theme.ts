@@ -1,12 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import type { ThemeType } from '@/types';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface ThemeState {
+const initialState: {
   theme: ThemeType;
-}
-
-const initialState: ThemeState = {
+} = {
   theme: 'theme-gray',
 };
 

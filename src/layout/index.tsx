@@ -12,15 +12,20 @@ import FullScreenLoading from '@/components/layout/loading';
 import Header from '../components/header/index';
 import { menus } from '../components/menus/config';
 import Menus from '../components/menus/index';
-import Global from '../global/index';
 
-import { ACCESS_TOKEN } from '@/config/constant';
+import type { UserInfo } from '@/types';
+
+import { ACCESS_TOKEN } from '@/constant/config';
+import useAnalysis from '@/hooks/useAnalysis';
+import useVersion from '@/hooks/useVersion';
 import { useAppSelector } from '@/store/hooks';
 
 import './index.scss';
 
 const AppHome = () => {
   useTitle('react管理系统');
+  useAnalysis(); //数据埋点
+  useVersion(); //版本更新提示
   const overFlowRef = useRef(null);
 
   const { theme } = useAppSelector((state) => state.theme);
@@ -58,7 +63,6 @@ const AppHome = () => {
           </article>
         </main>
       </div>
-      <Global />
     </>
   );
 };

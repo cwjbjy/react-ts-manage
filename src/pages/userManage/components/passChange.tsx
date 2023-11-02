@@ -6,7 +6,7 @@ interface Props {
   getPass(val: string): void;
 }
 
-const PassChange: React.FC<Props> = ({ getPass }) => {
+const PassChange = ({ getPass }: Props) => {
   const onPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     getPass(e.target.value);
   };

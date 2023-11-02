@@ -10,7 +10,7 @@ interface Props {
 
 const img_url = process.env.REACT_APP_IMG_URL;
 
-const UserCard = ({ userName, registerTime, fileName }: Props) => {
+const UserCard = ({ userName = '一叶扁舟', registerTime = '2021-03-21', fileName = '' }: Props) => {
   let role = userName === '一叶扁舟' ? '管理员' : '普通用户';
 
   return (
@@ -33,12 +33,6 @@ const UserCard = ({ userName, registerTime, fileName }: Props) => {
       </Row>
     </Card>
   );
-};
-
-UserCard.defaultProps = {
-  userName: '一叶扁舟',
-  registerTime: '2021-03-21',
-  fileName: '',
 };
 
 export default memo(UserCard);

@@ -7,6 +7,7 @@ import { Dropdown } from 'antd';
 
 import { getImage } from '@/apis/user';
 
+import type { ThemeType } from '@/types';
 import type { MenuProps } from 'antd';
 
 import { setFileName } from '@/store/file';
@@ -57,13 +58,13 @@ const Header = ({ userName }: Props) => {
   useRequest(() => getImage({ user_name: userName }), {
     ready: !!userName,
     onSuccess: (res) => {
-      dispatch(setFileName(res.data.data[0].photo));
+      dispatch(setFileName(res.data[0].photo));
     },
   });
 
   const onChangeTheme = useCallback(
-    (e: any) => {
-      dispatch(changeTheme(e.key));
+    (e: { key: string }) => {
+      dispatch(changeTheme(e.key as ThemeType));
     },
     [dispatch],
   );

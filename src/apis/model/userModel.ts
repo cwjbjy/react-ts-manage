@@ -1,4 +1,7 @@
+/* 接口返回值类型*/
+
 export interface RowItem {
+  key: React.Key;
   admin: null;
   authority: string;
   createTime: string;
@@ -6,9 +9,4 @@ export interface RowItem {
   password: string;
   photo: string;
   user_name: string;
-}
-
-export interface UsersModel {
-  code: number;
-  data: RowItem[];
 }

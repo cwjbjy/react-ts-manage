@@ -1,3 +1,2 @@
-export const bus = {
-  updateWs: 'page1',
-};
+/**websocket通信 */
+export const BUS_WS = 'bus_ws';

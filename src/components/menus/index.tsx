@@ -2,6 +2,7 @@ import { memo, useEffect, useCallback, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { Menu } from 'antd';
+import styled from 'styled-components';
 
 import { MenuItem } from './config';
 
@@ -44,17 +45,26 @@ const Menus = ({ menus }: Props) => {
   );
 
   return (
-    <Menu
-      style={{ width: 256 }}
-      selectedKeys={selectedKey}
-      openKeys={openKeys}
-      mode="inline"
-      className="Menu"
-      items={menus}
-      onOpenChange={onOpenChange}
-      onClick={onClick}
-    ></Menu>
+    <Wrapper>
+      <Menu
+        style={{ width: 256 }}
+        selectedKeys={selectedKey}
+        openKeys={openKeys}
+        mode="inline"
+        className="Menu"
+        items={menus}
+        onOpenChange={onOpenChange}
+        onClick={onClick}
+      ></Menu>
+    </Wrapper>
   );
 };
 
 export default memo(Menus);
+
+const Wrapper = styled.div`
+  .menuIcon {
+    width: 18px;
+    height: 18px;
+  }
+`;

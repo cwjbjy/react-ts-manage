@@ -12,6 +12,7 @@ import FullScreenLoading from '@/components/layout/loading';
 import reportWebVitals from './reportWebVitals';
 import router from './router';
 import store from './store';
+import './utils/observer';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

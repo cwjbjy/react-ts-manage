@@ -1,19 +1,19 @@
 import { Row, Col, Card } from 'antd';
+import styled from 'styled-components';
 
-import Bar from '@/components/baseEcharts/bar';
-import Cylinder from '@/components/baseEcharts/cylinder';
-import Line from '@/components/baseEcharts/line';
-import Pie from '@/components/baseEcharts/pie';
-import Scale from '@/components/baseEcharts/scale';
-import Scatter from '@/components/baseEcharts/scatter';
+import Bar from './components/bar';
+import Cylinder from './components/cylinder';
+import Line from './components/line';
+import Pie from './components/pie';
+import Scale from './components/scale';
+import Scatter from './components/scatter';
 
 import { useAppSelector } from '@/store/hooks';
-import './index.scss';
 
 const Chart = () => {
   const { theme } = useAppSelector((state) => state.theme);
   return (
-    <section>
+    <Wrapper>
       <Row className="chart">
         <Col span={12} className="echarts-box">
           <Card hoverable>
@@ -50,8 +50,16 @@ const Chart = () => {
           </Card>
         </Col>
       </Row>
-    </section>
+    </Wrapper>
   );
 };
 
 export default Chart;
+
+const Wrapper = styled.div`
+  .chart {
+    .echarts-box {
+      padding: 10px;
+    }
+  }
+`;

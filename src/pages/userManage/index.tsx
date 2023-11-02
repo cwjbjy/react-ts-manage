@@ -11,8 +11,9 @@ import UserTable from './components/userTable';
 import type { RowItem } from '@/apis/model/userModel';
 import { user, updateUser, deleteUser } from '@/apis/user';
 
-import { USER_INFO } from '@/config/constant';
-import './index.scss';
+import type { UserInfo } from '@/types';
+
+import { USER_INFO } from '@/constant/config';
 interface Info {
   id: number;
   user_name: string;
@@ -28,7 +29,7 @@ const setData = (data: RowItem[]) => {
 };
 
 const UserManage = () => {
-  const [info, setInfo] = useState<Info>({} as Info);
+  const [info, setInfo] = useState<Info>();
   const [isModalVisible, setModal] = useState(false);
   const [password, setPassword] = useState('');
   const [tableData, setTableData] = useState<RowItem[]>([]);
@@ -41,7 +42,7 @@ const UserManage = () => {
 
   const { run, loading } = useRequest(user, {
     onSuccess: (res) => {
-      setTableData(setData(res.data.data));
+      setTableData(setData(res.data));
     },
   });
 
@@ -52,7 +53,7 @@ const UserManage = () => {
         content: '密码修改成功',
       });
       ls.set(USER_INFO, {
-        userName: info.user_name,
+        userName: info?.user_name,
         passWord: password,
         flag: true,
       });
@@ -78,7 +79,7 @@ const UserManage = () => {
   );
 
   const handleOk = useCallback(() => {
-    let { id, user_name } = info;
+    let { id, user_name } = info as Info;
     handleUpdate({
       id,
       user_name,

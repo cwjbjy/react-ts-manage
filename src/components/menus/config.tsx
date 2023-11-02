@@ -12,94 +12,93 @@ import Magnifying from '@/assets/images/menus/magnifying.png';
 import Manage from '@/assets/images/menus/manage.png';
 import Pdf from '@/assets/images/menus/pdf.png';
 import Upload from '@/assets/images/menus/upload.png';
-
-import './config.scss';
+import * as path from '@/router/routerMap';
 
 export type MenuItem = Required<MenuProps>['items'][number];
 
 export const menus: MenuItem[] = [
   {
     label: '系统首页',
-    key: '/firstItem',
+    key: path.FIRSTITEM,
     icon: <img src={Home} alt="加载失败" className="menuIcon"></img>,
   },
   {
     label: '模拟航线',
-    key: '/fleet',
+    key: path.FLEET,
     icon: <img src={ChinaMap} alt="加载失败" className="menuIcon"></img>,
   },
   {
     label: '图片上传',
-    key: '/fileUp',
+    key: path.FILUP,
     icon: <img src={Upload} alt="加载失败" className="menuIcon"></img>,
   },
   {
     label: '文件预览',
-    key: '/pdf',
+    key: path.PDF,
     icon: <img src={Pdf} alt="加载失败" className="menuIcon"></img>,
   },
   {
     label: '基础图表',
-    key: '/baseEcharts',
+    key: path.BASE_ECHARTS,
     icon: <img src={Echarts} alt="加载失败" className="menuIcon"></img>,
   },
   {
     label: '基础表格',
-    key: '/baseTable',
+    key: path.BASE_TABLE,
     icon: <img src={BaseTable} alt="加载失败" className="menuIcon"></img>,
   },
   {
     label: '拖拽组件',
-    key: '/drag',
+    key: path.DRAG,
     icon: <img src={Drag} alt="加载失败" className="menuIcon"></img>,
     children: [
       {
         label: '拖拽列表',
-        key: '/dragList',
+        key: path.DRAG_LIST,
       },
       {
         label: '拖拽弹框',
-        key: '/dragDialog',
+        key: path.DRAG_DIALOG,
       },
     ],
   },
   {
     label: '语言转换',
     icon: <img src={I18n} alt="加载失败" className="menuIcon"></img>,
-    key: '/I18n',
+    key: path.I18N,
   },
   {
     label: '流程图',
-    key: '/flowChart',
+    key: path.flow_CHART,
     icon: <img src={FlowChart} alt="加载失败" className="menuIcon"></img>,
     children: [
       {
         label: '一般流程图',
-        key: '/commonChart',
+        key: path.COMMON_CHART,
       },
       {
         label: '定位流程图',
-        key: '/positionChart',
+        key: path.POSITION_CHART,
       },
       {
         label: '折叠流程图',
-        key: '/foldChart',
+        key: path.FLOD_CHART,
       },
     ],
   },
   {
     label: '放大镜',
-    key: '/magnifying',
+    key: path.MAGNIFYING,
     icon: <img src={Magnifying} alt="加载失败" className="menuIcon"></img>,
   },
   {
     label: '聊天室',
-    key: '/chatRoom',
+    key: path.CHARTROOM,
     icon: <img src={Chat} alt="加载失败" className="menuIcon"></img>,
   },
   {
     label: '后台管理',
-    key: '/manage',
+    key: path.MANAGE,
     icon: <img src={Manage} alt="加载失败" className="menuIcon"></img>,
   },
 ];

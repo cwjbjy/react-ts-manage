@@ -1,99 +1,101 @@
 import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
+import * as path from './routerMap';
+
 const Login = lazy(() => import(/* webpackChunkName: "Login" */ '@/pages/login/index'));
 const HomeLayout = lazy(() => import(/* webpackChunkName: "homeLayout" */ '@/layout/index'));
 
 const HomePage = lazy(() => import(/* webpackChunkName: "homePage" */ '@/pages/homePage/index'));
 const FleetLine = lazy(() => import(/* webpackChunkName: "fleetLine" */ '@/pages/fleetLine/index'));
-const FileUp = lazy(() => import(/* webpackChunkName: "fileUp" */ '@/pages/fileUp/index'));
+const FileUp = lazy(() => import(/* webpackChunkName: "fileUp" */ '@/pages/fileUp'));
 
-const PdfPreview = lazy(() => import(/* webpackChunkName: "PdfPreview" */ '@/pages/pdfPreview/index'));
+const PdfPreview = lazy(() => import(/* webpackChunkName: "PdfPreview" */ '@/pages/pdf'));
 const BaseEchart = lazy(() => import(/* webpackChunkName: "baseEchart" */ '@/pages/baseEchart/index'));
-const BaseTable = lazy(() => import(/* webpackChunkName: "baseTable" */ '@/pages/baseTable/index'));
+const BaseTable = lazy(() => import(/* webpackChunkName: "baseTable" */ '@/pages/baseTable'));
 const DragList = lazy(() => import(/* webpackChunkName: "DragList" */ '@/pages/drag/list/index'));
 const DragDialog = lazy(() => import(/* webpackChunkName: "DragDialog" */ '@/pages/drag/dialog/index'));
-const I18n = lazy(() => import(/* webpackChunkName: "I18n" */ '@/pages/I18n/index'));
-const CommonChart = lazy(() => import(/* webpackChunkName: "chart_common" */ '@/pages/chart/common/index'));
-const PositionChart = lazy(() => import(/* webpackChunkName: "chart_position" */ '@/pages/chart/position/index'));
-const FoldChart = lazy(() => import(/* webpackChunkName: "chart_fold" */ '@/pages/chart/fold/index'));
-const ChatRoom = lazy(() => import(/* webpackChunkName: "chatRoom" */ '@/pages/chatRoom/index'));
-const Magnifying = lazy(() => import(/* webpackChunkName: "magnifying" */ '@/pages/magnifying/index'));
+const I18n = lazy(() => import(/* webpackChunkName: "I18n" */ '@/pages/i18n'));
+const CommonChart = lazy(() => import(/* webpackChunkName: "chart_common" */ '@/pages/chart/common'));
+const PositionChart = lazy(() => import(/* webpackChunkName: "chart_position" */ '@/pages/chart/position'));
+const FoldChart = lazy(() => import(/* webpackChunkName: "chart_fold" */ '@/pages/chart/fold'));
+const ChatRoom = lazy(() => import(/* webpackChunkName: "chatRoom" */ '@/pages/chatRoom'));
+const Magnifying = lazy(() => import(/* webpackChunkName: "magnifying" */ '@/pages/magnifying'));
 const UserManage = lazy(() => import(/* webpackChunkName: "userManage" */ '@/pages/userManage/index'));
 
 const router = createBrowserRouter([
   {
-    path: '/login',
+    path: path.LOGIN,
     element: <Login />,
   },
   {
     element: <HomeLayout />,
     children: [
       {
-        path: '/firstItem',
+        path: path.FIRSTITEM,
         element: <HomePage />,
       },
       {
-        path: '/fleet',
+        path: path.FLEET,
         element: <FleetLine />,
       },
       {
-        path: '/fileUp',
+        path: path.FILUP,
         element: <FileUp />,
       },
       {
-        path: '/pdf',
+        path: path.PDF,
         element: <PdfPreview />,
       },
       {
-        path: '/baseEcharts',
+        path: path.BASE_ECHARTS,
         element: <BaseEchart />,
       },
       {
-        path: '/baseTable',
+        path: path.BASE_TABLE,
         element: <BaseTable />,
       },
       {
-        path: '/dragList',
+        path: path.DRAG_LIST,
         element: <DragList />,
       },
       {
-        path: '/dragDialog',
+        path: path.DRAG_DIALOG,
         element: <DragDialog />,
       },
       {
-        path: '/I18n',
+        path: path.I18N,
         element: <I18n />,
       },
       {
-        path: '/commonChart',
+        path: path.COMMON_CHART,
         element: <CommonChart />,
       },
       {
-        path: 'positionChart',
+        path: path.POSITION_CHART,
         element: <PositionChart />,
       },
       {
-        path: '/foldChart',
+        path: path.FLOD_CHART,
         element: <FoldChart />,
       },
       {
-        path: '/magnifying',
+        path: path.MAGNIFYING,
         element: <Magnifying />,
       },
       {
-        path: '/chatRoom',
+        path: path.CHARTROOM,
         element: <ChatRoom />,
       },
       {
-        path: '/manage',
+        path: path.MANAGE,
         element: <UserManage />,
       },
       {
         path: '/',
         element: (
           <>
-            <Navigate to="/firstItem" replace={true} />
+            <Navigate to={path.FIRSTITEM} replace={true} />
           </>
         ),
       },

@@ -1,7 +1,7 @@
 import Bowser from 'bowser';
 
-import { getTime } from './comFunc';
 import { onRouterChange } from './onRouter';
+import { getTime } from './share';
 
 import { trackWeb } from '@/apis/user';
 class Track {

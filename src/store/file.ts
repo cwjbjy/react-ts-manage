@@ -2,11 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface FileState {
+const initialState: {
   fileName: string;
-}
-
-const initialState: FileState = {
+} = {
   fileName: '',
 };
 

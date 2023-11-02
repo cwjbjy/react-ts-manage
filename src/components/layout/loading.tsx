@@ -1,8 +1,6 @@
 import { Spin } from 'antd';
 import styled from 'styled-components';
 
-import { center } from './flex';
-
 const FullScreenLoading = () => {
   return (
     <FullScreen>
@@ -16,5 +14,7 @@ export default FullScreenLoading;
 const FullScreen = styled.div`
   width: 100%;
   height: 100vh;
-  ${center}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

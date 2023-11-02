@@ -5,17 +5,18 @@ import { useRequest } from 'ahooks';
 import { Form, Input, message } from 'antd';
 import CryptoJS from 'crypto-es';
 
-import { FormButton } from './form';
+import { FormButton } from './login';
 
-import { getTime } from '@/utils/comFunc';
+import { getTime } from '@/utils/share';
 
 import { register } from '@/apis/user';
 
-import { CODE_EXIST } from '@/config/returnCodeMap';
-import './register.scss';
+import type { UserInfo } from '@/types';
+
+import { CODE_EXIST } from '@/constant/code';
 
 interface Props {
-  setUser: Dispatch<React.SetStateAction<any>>;
+  setUser: Dispatch<React.SetStateAction<UserInfo>>;
   onRegister: (params: UserInfo) => void;
 }
 
@@ -32,7 +33,7 @@ const RegisterForm = ({ setUser, onRegister }: Props) => {
     onSuccess: (data, params) => {
       setUser(userInfo);
       message.success({
-        content: data.data.msg,
+        content: data.msg,
         className: 'custom-message',
       });
       onRegister({

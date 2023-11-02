@@ -1,5 +1,3 @@
-import React from 'react';
-
 import FleetModel from './components/china';
 import './index.scss';
 

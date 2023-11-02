@@ -14,9 +14,10 @@ import UserCard from './components/userCard';
 
 import { getUser } from '@/apis/user';
 
-import { USER_INFO } from '@/config/constant';
+import type { UserInfo } from '@/types';
+
+import { USER_INFO } from '@/constant/config';
 import { useAppSelector } from '@/store/hooks';
-import './index.scss';
 
 const barModel = {
   xAxis: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
@@ -39,18 +40,18 @@ const HomePage = () => {
       }),
     {
       onSuccess: (res) => {
-        setCreateTime(res.data.data[0].createTime);
+        setCreateTime(res.data[0].createTime);
       },
     },
   );
 
   return (
-    <section style={{ paddingLeft: 20 }}>
+    <Wrapper>
       <div className="row1">
-        <Wrapper>
+        <div className="info">
           <UserCard fileName={fileName} userName={userName} registerTime={createTime} />
           <ProgressCard />
-        </Wrapper>
+        </div>
         <div style={{ marginLeft: 20, flex: 1 }}>
           <Message />
           <div className="Schedule">
@@ -70,13 +71,35 @@ const HomePage = () => {
           </Card>
         </Col>
       </Row>
-    </section>
+    </Wrapper>
   );
 };
 
 export default HomePage;
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  padding: 10px;
+  padding-left: 20px;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Schedule {
+    min-width: 560px;
+  }
+
+  .echarts-box:nth-of-type(1) {
+    padding-right: 10px;
+  }
+
+  .echarts-box:nth-of-type(2) {
+    padding-left: 10px;
+  }
+
+  .row1 {
+    display: flex;
+    margin-bottom: 10px;
+  }
 `;

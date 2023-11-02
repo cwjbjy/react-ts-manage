@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Table, Tag, Card } from 'antd';
-import './schedule.scss';
+import styled from 'styled-components';
 
 const { Column } = Table;
 
@@ -50,28 +50,38 @@ const data = [
 
 const Schedule = () => {
   return (
-    <Card hoverable style={{ height: 449 }} title="人员列表" className="schedule">
-      <Table dataSource={data} pagination={false}>
-        <Column title="Name" dataIndex="lastName" key="lastName" />
-        <Column title="Age" dataIndex="age" key="age" />
-        <Column title="Address" dataIndex="address" key="address" />
-        <Column
-          title="Tags"
-          dataIndex="tags"
-          key="tags"
-          render={(tags: string[]) => (
-            <>
-              {tags.map((tag) => (
-                <Tag color="blue" key={tag}>
-                  {tag}
-                </Tag>
-              ))}
-            </>
-          )}
-        />
-      </Table>
-    </Card>
+    <Wrapper>
+      <Card hoverable style={{ height: 449 }} title="人员列表" className="schedule">
+        <Table dataSource={data} pagination={false}>
+          <Column title="Name" dataIndex="lastName" key="lastName" />
+          <Column title="Age" dataIndex="age" key="age" />
+          <Column title="Address" dataIndex="address" key="address" />
+          <Column
+            title="Tags"
+            dataIndex="tags"
+            key="tags"
+            render={(tags: string[]) => (
+              <>
+                {tags.map((tag) => (
+                  <Tag color="blue" key={tag}>
+                    {tag}
+                  </Tag>
+                ))}
+              </>
+            )}
+          />
+        </Table>
+      </Card>
+    </Wrapper>
   );
 };
 
 export default React.memo(Schedule);
+
+const Wrapper = styled.div`
+  .schedule {
+    .ant-card-body {
+      padding-top: 14px;
+    }
+  }
+`;

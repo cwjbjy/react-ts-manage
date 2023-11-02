@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 
+import { Chart } from '@/components/layout/chart';
+
+import type { EchartsProps } from '@/types';
+
 import { themeColor } from '@/constant/theme';
 import useResize from '@/hooks/useResize';
 
@@ -184,7 +188,7 @@ const BarLine = ({ theme }: EchartsProps) => {
     initial();
   }, [initial]);
 
-  return <div ref={echart} className="myChart" style={{ height: 300 }}></div>;
+  return <Chart ref={echart}></Chart>;
 };
 
 export default React.memo(BarLine);
