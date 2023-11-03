@@ -12,8 +12,8 @@ import type { UserInfo } from '@/types';
 import type { UploadChangeParam } from 'antd/es/upload';
 import type { UploadFile } from 'antd/es/upload/interface';
 
-import { ACCESS_TOKEN } from '@/constant/config';
-import { USER_INFO } from '@/constant/config';
+import { ACCESS_TOKEN } from '@/settings/localStorage';
+import { USER_INFO } from '@/settings/localStorage';
 import { setFileName } from '@/store/file';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 

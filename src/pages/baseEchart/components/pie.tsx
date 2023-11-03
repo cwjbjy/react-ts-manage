@@ -4,8 +4,8 @@ import { Chart } from '@/components/layout/chart';
 
 import type { EchartsProps } from '@/types';
 
-import { themeColor } from '@/constant/theme';
 import useResize from '@/hooks/useResize';
+import { themeColor } from '@/settings/theme';
 
 const Pie = ({ theme }: EchartsProps) => {
   const echart = useRef(null);

@@ -12,7 +12,7 @@ import Magnifying from '@/assets/images/menus/magnifying.png';
 import Manage from '@/assets/images/menus/manage.png';
 import Pdf from '@/assets/images/menus/pdf.png';
 import Upload from '@/assets/images/menus/upload.png';
-import * as path from '@/router/routerMap';
+import * as path from '@/settings/routerMap';
 
 export type MenuItem = Required<MenuProps>['items'][number];
 
@@ -69,7 +69,7 @@ export const menus: MenuItem[] = [
   },
   {
     label: '流程图',
-    key: path.flow_CHART,
+    key: path.FLOW_CHART,
     icon: <img src={FlowChart} alt="加载失败" className="menuIcon"></img>,
     children: [
       {

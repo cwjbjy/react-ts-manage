@@ -1,4 +1,4 @@
-import { BUS_WS } from '@/constant/bus';
+import { BUS_WS } from '@/settings/bus';
 
 const ws = process.env.REACT_APP_WS;
 

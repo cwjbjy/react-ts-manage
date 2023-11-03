@@ -1,6 +1,8 @@
 import { memo } from 'react';
 
 import { Card, Row, Col } from 'antd';
+
+import { MANAGE_NAME } from '@/settings/user';
 import './userCard.scss';
 interface Props {
   userName: string;
@@ -11,7 +13,7 @@ interface Props {
 const img_url = process.env.REACT_APP_IMG_URL;
 
 const UserCard = ({ userName = '一叶扁舟', registerTime = '2021-03-21', fileName = '' }: Props) => {
-  let role = userName === '一叶扁舟' ? '管理员' : '普通用户';
+  let role = userName === MANAGE_NAME ? '管理员' : '普通用户';
 
   return (
     <Card hoverable className="user" style={{ marginBottom: 10 }}>

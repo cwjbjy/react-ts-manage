@@ -11,8 +11,8 @@ import LoginOther from './components/third';
 
 import type { UserInfo } from '@/types';
 
-import { ACCESS_TOKEN, USER_MENU } from '@/constant/config';
-import { USER_INFO } from '@/constant/config';
+import { ACCESS_TOKEN, USER_MENU } from '@/settings/localStorage';
+import { USER_INFO } from '@/settings/localStorage';
 
 interface ForwardObject {
   login: (params: UserInfo) => void;

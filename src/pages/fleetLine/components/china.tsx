@@ -1,8 +1,8 @@
 import { useEffect, useRef, useCallback } from 'react';
 
-import type { ApiData } from '@/constant/map';
+import type { ApiData } from '@/settings/map';
 
-import { geoCoordMap, apiData } from '@/constant/map';
+import { geoCoordMap, apiData } from '@/settings/map';
 
 const buildLines = function (data: ApiData, geoCoordMap: Record<any, number[]>) {
   var planePath =

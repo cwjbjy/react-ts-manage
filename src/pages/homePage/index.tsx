@@ -16,7 +16,7 @@ import { getUser } from '@/apis/user';
 
 import type { UserInfo } from '@/types';
 
-import { USER_INFO } from '@/constant/config';
+import { USER_INFO } from '@/settings/localStorage';
 import { useAppSelector } from '@/store/hooks';
 
 const barModel = {

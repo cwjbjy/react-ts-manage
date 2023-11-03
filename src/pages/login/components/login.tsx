@@ -12,8 +12,8 @@ import { login } from '@/apis/user';
 
 import type { UserInfo } from '@/types';
 
-import { CODE_NAME_PASS } from '@/constant/code';
-import { USER_MENU, ACCESS_TOKEN } from '@/constant/config';
+import { CODE_NAME_PASS } from '@/settings/code';
+import { USER_MENU, ACCESS_TOKEN } from '@/settings/localStorage';
 
 interface Props {
   setUser: Dispatch<React.SetStateAction<UserInfo>>;

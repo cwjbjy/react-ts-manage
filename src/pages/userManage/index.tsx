@@ -13,7 +13,8 @@ import { user, updateUser, deleteUser } from '@/apis/user';
 
 import type { UserInfo } from '@/types';
 
-import { USER_INFO } from '@/constant/config';
+import { USER_INFO } from '@/settings/localStorage';
+import { MANAGE_NAME } from '@/settings/user';
 interface Info {
   id: number;
   user_name: string;
@@ -90,7 +91,7 @@ const UserManage = () => {
 
   const getPass = useCallback((val: string) => setPassword(val), []);
 
-  if (userName !== '一叶扁舟') return <>管理员账户方可查看</>;
+  if (userName !== MANAGE_NAME) return <>管理员账户方可查看</>;
   return (
     <section>
       {loading ? (

@@ -10,7 +10,7 @@ import type { Message, UserInfo } from '@/types';
 
 import showImage from '@/assets/images/chartRoom/chatShowV2.0.png';
 import rootImage from '@/assets/images/chartRoom/root.png';
-import { BUS_WS } from '@/constant/bus';
+import { BUS_WS } from '@/settings/bus';
 import { useAppSelector } from '@/store/hooks';
 
 const img_url = process.env.REACT_APP_IMG_URL;

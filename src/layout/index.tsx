@@ -15,9 +15,9 @@ import Menus from '../components/menus/index';
 
 import type { UserInfo } from '@/types';
 
-import { ACCESS_TOKEN } from '@/constant/config';
 import useAnalysis from '@/hooks/useAnalysis';
 import useVersion from '@/hooks/useVersion';
+import { ACCESS_TOKEN } from '@/settings/localStorage';
 import { useAppSelector } from '@/store/hooks';
 
 import './index.scss';

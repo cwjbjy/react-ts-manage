@@ -1,9 +1,9 @@
 import * as ls from 'local-storage';
 import qs from 'qs';
 
-import { CODE_TOKEN_EXPIRED } from '@/constant/code';
-import { ACCESS_TOKEN } from '@/constant/config';
-import { LOGIN } from '@/router/routerMap';
+import { CODE_TOKEN_EXPIRED } from '@/settings/code';
+import { ACCESS_TOKEN } from '@/settings/localStorage';
+import { LOGIN } from '@/settings/routerMap';
 
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
@@ -76,6 +76,7 @@ class FetchClient {
         }
       } else {
         const { status } = res;
+        /* token过期，重定向到首页 */
         if ([CODE_TOKEN_EXPIRED].includes(status)) {
           window.location.href = LOGIN;
         }

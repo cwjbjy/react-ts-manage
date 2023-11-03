@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import * as path from './routerMap';
+import * as path from '../settings/routerMap';
 
 const Login = lazy(() => import(/* webpackChunkName: "Login" */ '@/pages/login/index'));
 const HomeLayout = lazy(() => import(/* webpackChunkName: "homeLayout" */ '@/layout/index'));

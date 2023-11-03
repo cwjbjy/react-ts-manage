@@ -13,7 +13,7 @@ import { register } from '@/apis/user';
 
 import type { UserInfo } from '@/types';
 
-import { CODE_EXIST } from '@/constant/code';
+import { CODE_EXIST } from '@/settings/code';
 
 interface Props {
   setUser: Dispatch<React.SetStateAction<UserInfo>>;

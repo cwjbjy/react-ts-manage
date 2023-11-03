@@ -10,6 +10,8 @@ import { getImage } from '@/apis/user';
 import type { ThemeType } from '@/types';
 import type { MenuProps } from 'antd';
 
+import { LOGIN } from '@/settings/routerMap';
+import { GITHUB } from '@/settings/user';
 import { setFileName } from '@/store/file';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { changeTheme } from '@/store/theme';
@@ -39,7 +41,7 @@ const list: MenuProps['items'] = [
   {
     key: '0',
     label: (
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cwjbjy/react-ts-manage">
+      <a target="_blank" rel="noopener noreferrer" href={GITHUB}>
         项目仓库
       </a>
     ),
@@ -72,7 +74,7 @@ const Header = ({ userName }: Props) => {
   const onUserClick = useCallback(
     (e: { key: string }) => {
       if (e.key === '1') {
-        navigation('/login');
+        navigation(LOGIN);
       }
     },
     [navigation],
