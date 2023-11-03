@@ -15,7 +15,6 @@ import Menus from '../components/menus/index';
 
 import type { UserInfo } from '@/types';
 
-import useAnalysis from '@/hooks/useAnalysis';
 import useVersion from '@/hooks/useVersion';
 import { ACCESS_TOKEN } from '@/settings/localStorage';
 import { useAppSelector } from '@/store/hooks';
@@ -24,7 +23,6 @@ import './index.scss';
 
 const AppHome = () => {
   useTitle('react管理系统');
-  useAnalysis(); //数据埋点
   useVersion(); //版本更新提示
   const overFlowRef = useRef(null);
 
