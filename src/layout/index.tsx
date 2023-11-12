@@ -17,7 +17,7 @@ import type { UserInfo } from '@/types';
 
 import useVersion from '@/hooks/useVersion';
 import { ACCESS_TOKEN } from '@/settings/localStorage';
-import { useAppSelector } from '@/store/hooks';
+import useThemeStore from '@/store/theme';
 
 import './index.scss';
 
@@ -26,7 +26,7 @@ const AppHome = () => {
   useVersion(); //版本更新提示
   const overFlowRef = useRef(null);
 
-  const { theme } = useAppSelector((state) => state.theme);
+  const { theme } = useThemeStore();
   const userName = useMemo(() => get<UserInfo>('userInfo')?.userName, []);
 
   const newMenus = useMemo(() => {

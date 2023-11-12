@@ -1,24 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { create } from 'zustand';
 
 import type { ThemeType } from '@/types';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: {
+interface ThemeState {
   theme: ThemeType;
-} = {
+  changeTheme: (params: ThemeType) => void;
+}
+
+// 创建状态存储
+const useThemeStore = create<ThemeState>((set) => ({
   theme: 'theme-gray',
-};
+  changeTheme: (theme) => set({ theme }),
+}));
 
-const theme = createSlice({
-  name: 'theme',
-  initialState,
-  reducers: {
-    changeTheme: (state, action: PayloadAction<ThemeType>) => {
-      state.theme = action.payload;
-    },
-  },
-});
-
-export const { changeTheme } = theme.actions;
-
-export default theme.reducer;
+export default useThemeStore;

@@ -14,8 +14,7 @@ import type { UploadFile } from 'antd/es/upload/interface';
 
 import { ACCESS_TOKEN } from '@/settings/localStorage';
 import { USER_INFO } from '@/settings/localStorage';
-import { setFileName } from '@/store/file';
-import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import useFileStore from '@/store/file';
 
 const baseURL = process.env.REACT_APP_AUTH_URL;
 const img_url = process.env.REACT_APP_IMG_URL;
@@ -33,15 +32,14 @@ const beforeUpload = (file: File) => {
 };
 
 const FileUp = () => {
-  const { fileName } = useAppSelector((state) => state.file);
-  const dispatch = useAppDispatch();
+  const { fileName, setFileName } = useFileStore();
   const [loading, setLoading] = useState(false);
 
   const userName = useMemo(() => ls.get<UserInfo>(USER_INFO).userName, []);
   const { run } = useRequest(getImage, {
     manual: true,
     onSuccess: (res) => {
-      dispatch(setFileName(res.data[0].photo));
+      setFileName(res.data[0].photo);
     },
   });
 

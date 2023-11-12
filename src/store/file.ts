@@ -1,23 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
-
-import type { PayloadAction } from '@reduxjs/toolkit';
-
-const initialState: {
+import { create } from 'zustand';
+interface FileState {
   fileName: string;
-} = {
+  setFileName: (params: string) => void;
+}
+
+// 创建状态存储
+const useFileStore = create<FileState>((set) => ({
   fileName: '',
-};
+  setFileName: (fileName) => set({ fileName }),
+}));
 
-const file = createSlice({
-  name: 'file',
-  initialState,
-  reducers: {
-    setFileName: (state, action: PayloadAction<string>) => {
-      state.fileName = action.payload;
-    },
-  },
-});
-
-export const { setFileName } = file.actions;
-
-export default file.reducer;
+export default useFileStore;

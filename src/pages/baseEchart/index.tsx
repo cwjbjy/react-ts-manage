@@ -8,10 +8,10 @@ import Pie from './components/pie';
 import Scale from './components/scale';
 import Scatter from './components/scatter';
 
-import { useAppSelector } from '@/store/hooks';
+import useThemeStore from '@/store/theme';
 
 const Chart = () => {
-  const { theme } = useAppSelector((state) => state.theme);
+  const { theme } = useThemeStore();
   return (
     <Wrapper>
       <Row className="chart">

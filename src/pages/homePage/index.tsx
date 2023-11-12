@@ -17,7 +17,8 @@ import { getUser } from '@/apis/user';
 import type { UserInfo } from '@/types';
 
 import { USER_INFO } from '@/settings/localStorage';
-import { useAppSelector } from '@/store/hooks';
+import useFileStore from '@/store/file';
+import useThemeStore from '@/store/theme';
 
 const barModel = {
   xAxis: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
@@ -25,9 +26,9 @@ const barModel = {
 };
 
 const HomePage = () => {
-  const { fileName } = useAppSelector((state) => state.file);
+  const { fileName } = useFileStore();
 
-  const { theme } = useAppSelector((state) => state.theme);
+  const { theme } = useThemeStore();
 
   const [createTime, setCreateTime] = useState('');
 

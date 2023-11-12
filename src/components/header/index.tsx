@@ -12,9 +12,8 @@ import type { MenuProps } from 'antd';
 
 import { LOGIN } from '@/settings/routerMap';
 import { GITHUB } from '@/settings/user';
-import { setFileName } from '@/store/file';
-import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { changeTheme } from '@/store/theme';
+import useFileStore from '@/store/file';
+import useThemeStore from '@/store/theme';
 
 import './index.scss';
 
@@ -53,22 +52,22 @@ const list: MenuProps['items'] = [
 ];
 
 const Header = ({ userName }: Props) => {
-  const { fileName } = useAppSelector((state) => state.file);
-  const dispatch = useAppDispatch();
+  const { fileName, setFileName } = useFileStore();
+  const { changeTheme } = useThemeStore();
   const navigation = useNavigate();
 
   useRequest(() => getImage({ user_name: userName }), {
     ready: !!userName,
     onSuccess: (res) => {
-      dispatch(setFileName(res.data[0].photo));
+      setFileName(res.data[0].photo);
     },
   });
 
   const onChangeTheme = useCallback(
     (e: { key: string }) => {
-      dispatch(changeTheme(e.key as ThemeType));
+      changeTheme(e.key as ThemeType);
     },
-    [dispatch],
+    [changeTheme],
   );
 
   const onUserClick = useCallback(

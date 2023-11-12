@@ -2,7 +2,6 @@ import 'antd/dist/reset.css';
 import './assets/icon/iconfont.css';
 
 import { Suspense } from 'react';
-import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
 import { TYPES, init } from 'cwj_monitoring';
@@ -12,7 +11,6 @@ import FullScreenLoading from '@/components/layout/loading';
 
 import reportWebVitals from './reportWebVitals';
 import router from './router';
-import store from './store';
 import './utils/observer';
 
 //自己的npm包，数据埋点
@@ -26,11 +24,9 @@ init({
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <Provider store={store}>
-    <Suspense fallback={<FullScreenLoading />}>
-      <RouterProvider router={router} />
-    </Suspense>
-  </Provider>,
+  <Suspense fallback={<FullScreenLoading />}>
+    <RouterProvider router={router} />
+  </Suspense>,
 );
 
 // If you want to start measuring performance in your app, pass a function

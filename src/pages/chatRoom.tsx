@@ -11,7 +11,7 @@ import type { Message, UserInfo } from '@/types';
 import showImage from '@/assets/images/chartRoom/chatShowV2.0.png';
 import rootImage from '@/assets/images/chartRoom/root.png';
 import { BUS_WS } from '@/settings/bus';
-import { useAppSelector } from '@/store/hooks';
+import useFileStore from '@/store/file';
 
 const img_url = process.env.REACT_APP_IMG_URL;
 
@@ -21,7 +21,7 @@ const ChatRoom = () => {
   const [isModalImage, setIsModalImage] = useState(false);
   const [input, setInput] = useState('');
   const userName = useMemo(() => ls.get<UserInfo>('userInfo').userName, []);
-  const { fileName } = useAppSelector((state) => state.file);
+  const { fileName } = useFileStore();
   const [connectFlag, setConnectFlag] = useState(false);
   const [closeFlag, setCloseFlag] = useState(true);
   const [latestMessage, setLatestMessage] = useState();
