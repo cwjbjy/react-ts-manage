@@ -2,10 +2,9 @@ import { useEffect, useRef, memo } from 'react';
 
 import { Chart } from '@/components/layout/chart';
 
-import type { EchartsProps } from '@/types';
-
 import useResize from '@/hooks/useResize';
 import { themeColor } from '@/settings/theme';
+import type { EchartsProps } from '@/types';
 
 const data = [
   [
@@ -58,10 +57,12 @@ const Scatter = ({ theme }: EchartsProps) => {
   useResize(echart);
 
   useEffect(() => {
-    let myChart;
-    myChart = window.echarts.init(echart.current);
-    myChart.clear();
-    myChart.setOption({
+    let echartsInstance = window.echarts.getInstanceByDom(echart.current);
+    if (!echartsInstance) {
+      echartsInstance = window.echarts.init(echart.current);
+    }
+    echartsInstance.clear();
+    echartsInstance.setOption({
       title: {
         text: '散点图',
         left: 'center',

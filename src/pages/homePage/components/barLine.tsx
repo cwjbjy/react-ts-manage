@@ -2,19 +2,20 @@ import React, { useEffect, useRef, useCallback } from 'react';
 
 import { Chart } from '@/components/layout/chart';
 
-import type { EchartsProps } from '@/types';
-
 import useResize from '@/hooks/useResize';
 import { themeColor } from '@/settings/theme';
+import type { EchartsProps } from '@/types';
 
 const BarLine = ({ theme }: EchartsProps) => {
   const echart = useRef(null);
 
   const initial = useCallback(() => {
-    let myChart;
-    myChart = window.echarts.init(echart.current);
-    myChart.clear();
-    myChart.setOption({
+    let echartsInstance = window.echarts.getInstanceByDom(echart.current);
+    if (!echartsInstance) {
+      echartsInstance = window.echarts.init(echart.current);
+    }
+    echartsInstance.clear();
+    echartsInstance.setOption({
       title: {
         text: '2019年销售水量和主营业务收入对比',
         textStyle: {

@@ -2,9 +2,9 @@ import { useRef, useEffect, useCallback } from 'react';
 
 import { useExternal } from 'ahooks';
 
-import { GoChart } from './fold';
-
 import userImage from '@/assets/images/home/user.jpg';
+
+import { GoChart } from './fold';
 
 const CommonChart = () => {
   const status = useExternal('/static/go.js');

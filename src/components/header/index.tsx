@@ -7,13 +7,13 @@ import { Dropdown } from 'antd';
 
 import { getImage } from '@/apis/user';
 
-import type { ThemeType } from '@/types';
-import type { MenuProps } from 'antd';
-
 import { LOGIN } from '@/settings/routerMap';
 import { GITHUB } from '@/settings/user';
 import useFileStore from '@/store/file';
 import useThemeStore from '@/store/theme';
+import type { ThemeType } from '@/types';
+
+import type { MenuProps } from 'antd';
 
 import './index.scss';
 

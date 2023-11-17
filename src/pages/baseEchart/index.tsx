@@ -1,14 +1,14 @@
 import { Row, Col, Card } from 'antd';
 import styled from 'styled-components';
 
+import useThemeStore from '@/store/theme';
+
 import Bar from './components/bar';
 import Cylinder from './components/cylinder';
 import Line from './components/line';
 import Pie from './components/pie';
 import Scale from './components/scale';
 import Scatter from './components/scatter';
-
-import useThemeStore from '@/store/theme';
 
 const Chart = () => {
   const { theme } = useThemeStore();

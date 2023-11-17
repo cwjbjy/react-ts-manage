@@ -3,18 +3,18 @@ import { useState, useMemo, useCallback } from 'react';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Upload, message, Card } from 'antd';
-import * as ls from 'local-storage';
 import styled from 'styled-components';
 
-import { getImage } from '@/apis/user';
+import { ls } from '@/utils/storage';
 
-import type { UserInfo } from '@/types';
-import type { UploadChangeParam } from 'antd/es/upload';
-import type { UploadFile } from 'antd/es/upload/interface';
+import { getImage } from '@/apis/user';
 
 import { ACCESS_TOKEN } from '@/settings/localStorage';
 import { USER_INFO } from '@/settings/localStorage';
 import useFileStore from '@/store/file';
+
+import type { UploadChangeParam } from 'antd/es/upload';
+import type { UploadFile } from 'antd/es/upload/interface';
 
 const baseURL = process.env.REACT_APP_AUTH_URL;
 const img_url = process.env.REACT_APP_IMG_URL;
@@ -35,7 +35,7 @@ const FileUp = () => {
   const { fileName, setFileName } = useFileStore();
   const [loading, setLoading] = useState(false);
 
-  const userName = useMemo(() => ls.get<UserInfo>(USER_INFO).userName, []);
+  const userName = useMemo(() => ls.get(USER_INFO)?.userName, []);
   const { run } = useRequest(getImage, {
     manual: true,
     onSuccess: (res) => {

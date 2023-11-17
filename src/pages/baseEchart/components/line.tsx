@@ -2,10 +2,9 @@ import { useEffect, useRef, memo } from 'react';
 
 import { Chart } from '@/components/layout/chart';
 
-import type { EchartsProps } from '@/types';
-
 import useResize from '@/hooks/useResize';
 import { themeColor } from '@/settings/theme';
+import type { EchartsProps } from '@/types';
 
 const Line = ({ theme }: EchartsProps) => {
   const echart = useRef(null);
@@ -13,10 +12,12 @@ const Line = ({ theme }: EchartsProps) => {
   useResize(echart);
 
   useEffect(() => {
-    let myChart;
-    myChart = window.echarts.init(echart.current);
-    myChart.clear();
-    myChart.setOption({
+    let echartsInstance = window.echarts.getInstanceByDom(echart.current);
+    if (!echartsInstance) {
+      echartsInstance = window.echarts.init(echart.current);
+    }
+    echartsInstance.clear();
+    echartsInstance.setOption({
       color: ['#eccc68', '#ff7f50', '#7bed9f', '#70a1ff', '#5352ed', '#2ed573', '#1e90ff', '#3742fa'],
       title: {
         left: 'center',

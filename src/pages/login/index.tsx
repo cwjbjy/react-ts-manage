@@ -2,17 +2,17 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useLocalStorageState, useTitle } from 'ahooks';
 import cn from 'classnames';
-import * as ls from 'local-storage';
 import styled from 'styled-components';
+
+import { ls } from '@/utils/storage';
+
+import { ACCESS_TOKEN, USER_MENU } from '@/settings/localStorage';
+import { USER_INFO } from '@/settings/localStorage';
+import type { UserInfo } from '@/types';
 
 import LoginForm from './components/login';
 import RegisterForm from './components/register';
 import LoginOther from './components/third';
-
-import type { UserInfo } from '@/types';
-
-import { ACCESS_TOKEN, USER_MENU } from '@/settings/localStorage';
-import { USER_INFO } from '@/settings/localStorage';
 
 interface ForwardObject {
   login: (params: UserInfo) => void;

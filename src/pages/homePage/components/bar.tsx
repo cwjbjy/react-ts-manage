@@ -2,19 +2,20 @@ import { memo, useEffect, useRef, useCallback } from 'react';
 
 import { Chart } from '@/components/layout/chart';
 
-import type { EchartsProps } from '@/types';
-
 import useResize from '@/hooks/useResize';
 import { themeColor } from '@/settings/theme';
+import type { EchartsProps } from '@/types';
 
 const Bar = ({ theme, model }: EchartsProps) => {
   const echart = useRef(null);
 
   const initial = useCallback(() => {
-    let myChart;
-    myChart = window.echarts.init(echart.current);
-    myChart.clear();
-    myChart.setOption({
+    let echartsInstance = window.echarts.getInstanceByDom(echart.current);
+    if (!echartsInstance) {
+      echartsInstance = window.echarts.init(echart.current);
+    }
+    echartsInstance.clear();
+    echartsInstance.setOption({
       color: ['#2d8cf0'],
       title: {
         text: '销售图表',

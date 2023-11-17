@@ -1,17 +1,16 @@
 import { useRef, useEffect, useMemo, useState, useCallback } from 'react';
 
 import { Button, message, Input, Card, Modal } from 'antd';
-import * as ls from 'local-storage';
 import styled from 'styled-components';
 
 import insService from '@/utils/chat';
-
-import type { Message, UserInfo } from '@/types';
+import { ls } from '@/utils/storage';
 
 import showImage from '@/assets/images/chartRoom/chatShowV2.0.png';
 import rootImage from '@/assets/images/chartRoom/root.png';
 import { BUS_WS } from '@/settings/bus';
 import useFileStore from '@/store/file';
+import type { Message } from '@/types';
 
 const img_url = process.env.REACT_APP_IMG_URL;
 
@@ -20,7 +19,7 @@ const ChatRoom = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalImage, setIsModalImage] = useState(false);
   const [input, setInput] = useState('');
-  const userName = useMemo(() => ls.get<UserInfo>('userInfo').userName, []);
+  const userName = useMemo(() => ls.get('userInfo')?.userName, []);
   const { fileName } = useFileStore();
   const [connectFlag, setConnectFlag] = useState(false);
   const [closeFlag, setCloseFlag] = useState(true);

@@ -5,15 +5,14 @@ import { useRequest } from 'ahooks';
 import { Form, Input, message } from 'antd';
 import CryptoJS from 'crypto-es';
 
-import { FormButton } from './login';
-
 import { getTime } from '@/utils/share';
 
 import { register } from '@/apis/user';
 
+import { CODE_EXIST } from '@/settings/code';
 import type { UserInfo } from '@/types';
 
-import { CODE_EXIST } from '@/settings/code';
+import { FormButton } from './login';
 
 interface Props {
   setUser: Dispatch<React.SetStateAction<UserInfo>>;

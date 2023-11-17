@@ -2,8 +2,15 @@ import { useMemo, useState } from 'react';
 
 import { useRequest } from 'ahooks';
 import { Row, Col, Card } from 'antd';
-import { get } from 'local-storage';
 import styled from 'styled-components';
+
+import { ls } from '@/utils/storage';
+
+import { getUser } from '@/apis/user';
+
+import { USER_INFO } from '@/settings/localStorage';
+import useFileStore from '@/store/file';
+import useThemeStore from '@/store/theme';
 
 import Bar from './components/bar';
 import BarLine from './components/barLine';
@@ -11,14 +18,6 @@ import Message from './components/message';
 import ProgressCard from './components/progressCard';
 import Schedule from './components/schedule';
 import UserCard from './components/userCard';
-
-import { getUser } from '@/apis/user';
-
-import type { UserInfo } from '@/types';
-
-import { USER_INFO } from '@/settings/localStorage';
-import useFileStore from '@/store/file';
-import useThemeStore from '@/store/theme';
 
 const barModel = {
   xAxis: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
@@ -32,7 +31,7 @@ const HomePage = () => {
 
   const [createTime, setCreateTime] = useState('');
 
-  const userName = useMemo(() => get<UserInfo>(USER_INFO).userName, []);
+  const userName = useMemo(() => ls.get(USER_INFO)?.userName, []);
 
   useRequest(
     () =>

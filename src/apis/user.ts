@@ -1,6 +1,6 @@
-import { Url } from './url';
-
 import HttpClient from '@/utils/fetch';
+
+import { Url } from './url';
 
 import type {
   LoginParams,

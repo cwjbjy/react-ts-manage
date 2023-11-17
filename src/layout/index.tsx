@@ -4,8 +4,6 @@ import { Outlet, Navigate } from 'react-router-dom';
 
 import { useTitle } from 'ahooks';
 import { FloatButton } from 'antd';
-import { get } from 'local-storage';
-import * as ls from 'local-storage';
 
 import FullScreenLoading from '@/components/layout/loading';
 
@@ -13,10 +11,11 @@ import Header from '../components/header/index';
 import { menus } from '../components/menus/config';
 import Menus from '../components/menus/index';
 
-import type { UserInfo } from '@/types';
+import { ls } from '@/utils/storage';
 
 import useVersion from '@/hooks/useVersion';
 import { ACCESS_TOKEN } from '@/settings/localStorage';
+import { LOGIN } from '@/settings/routerMap';
 import useThemeStore from '@/store/theme';
 
 import './index.scss';
@@ -27,10 +26,10 @@ const AppHome = () => {
   const overFlowRef = useRef(null);
 
   const { theme } = useThemeStore();
-  const userName = useMemo(() => get<UserInfo>('userInfo')?.userName, []);
+  const userName = useMemo(() => ls.get('userInfo')?.userName, []);
 
   const newMenus = useMemo(() => {
-    let authMenus = get<string[]>('menu');
+    let authMenus = ls.get('menu');
     return menus.filter((item) => {
       if (authMenus) {
         if (item && item.key) {
@@ -42,7 +41,7 @@ const AppHome = () => {
   }, []);
 
   if (!ls.get(ACCESS_TOKEN)) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={LOGIN} replace />;
   }
 
   return (

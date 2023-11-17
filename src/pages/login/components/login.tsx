@@ -5,15 +5,15 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useRequest, useKeyPress } from 'ahooks';
 import { Form, Input, Button } from 'antd';
 import CryptoJS from 'crypto-es';
-import * as ls from 'local-storage';
 import styled from 'styled-components';
+
+import { ls } from '@/utils/storage';
 
 import { login } from '@/apis/user';
 
-import type { UserInfo } from '@/types';
-
 import { CODE_NAME_PASS } from '@/settings/code';
 import { USER_MENU, ACCESS_TOKEN } from '@/settings/localStorage';
+import type { UserInfo } from '@/types';
 
 interface Props {
   setUser: Dispatch<React.SetStateAction<UserInfo>>;

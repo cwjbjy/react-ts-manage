@@ -1,5 +1,6 @@
-import * as ls from 'local-storage';
 import qs from 'qs';
+
+import { ls } from '@/utils/storage';
 
 import { CODE_TOKEN_EXPIRED } from '@/settings/code';
 import { ACCESS_TOKEN } from '@/settings/localStorage';

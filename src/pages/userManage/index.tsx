@@ -3,18 +3,18 @@ import { useCallback, useState, useMemo } from 'react';
 import { useRequest } from 'ahooks';
 import { Card, Modal, message, Spin } from 'antd';
 import CryptoJS from 'crypto-es';
-import * as ls from 'local-storage';
 
-import PassChange from './components/passChange';
-import UserTable from './components/userTable';
+import { ls } from '@/utils/storage';
 
 import type { RowItem } from '@/apis/model/userModel';
 import { user, updateUser, deleteUser } from '@/apis/user';
 
-import type { UserInfo } from '@/types';
-
 import { USER_INFO } from '@/settings/localStorage';
 import { MANAGE_NAME } from '@/settings/user';
+
+import PassChange from './components/passChange';
+import UserTable from './components/userTable';
+
 interface Info {
   id: number;
   user_name: string;
@@ -34,7 +34,7 @@ const UserManage = () => {
   const [isModalVisible, setModal] = useState(false);
   const [password, setPassword] = useState('');
   const [tableData, setTableData] = useState<RowItem[]>([]);
-  const userName = useMemo(() => ls.get<UserInfo>('userInfo').userName, []);
+  const userName = useMemo(() => ls.get('userInfo')?.userName, []);
 
   const onModal = useCallback(({ isModalVisible, info }: { isModalVisible: boolean; info: Info }) => {
     setModal(isModalVisible);
