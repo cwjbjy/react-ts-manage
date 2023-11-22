@@ -12,6 +12,7 @@ import FullScreenLoading from '@/components/layout/loading';
 import reportWebVitals from './reportWebVitals';
 import router from './router';
 import './utils/observer';
+import './utils/i18';
 
 //自己的npm包，数据埋点
 init({
