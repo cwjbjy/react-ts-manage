@@ -1,18 +1,16 @@
 # 技术栈
 
-js框架：react 
+前端框架：react 
+
+状态管理：zustand
+
+路由管理：react-router-dom V6 
 
 UI框架：antD 
 
 数据可视化工具：echarts 
 
-状态管理：react-redux，@reduxjs/toolkit
-
-路由：react-router-dom6 
-
-通信：axios
-
-css处理器：scss
+通信：fetch
 
 打包工具：wepack5
 

@@ -47,7 +47,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json}": [
+    "src/!(assets)/*.{js,jsx,ts,tsx}": [
       "eslint --ignore-path .gitignore --max-warnings 0",
       "prettier --write",
       "git add"

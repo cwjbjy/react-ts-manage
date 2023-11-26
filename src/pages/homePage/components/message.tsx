@@ -90,9 +90,10 @@ export const Wrapper = styled.div`
       font-size: 50px;
       width: 100px;
       height: 100px;
-      text-align: center;
-      line-height: 110px;
       color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .grid-con-1 {
       background: rgb(45, 140, 240);
