@@ -4,7 +4,7 @@ import { debounce } from '@/utils/share';
 
 export default function useResize(echartRef: RefObject<HTMLDivElement>) {
   const debounceAutoSize = debounce(() => {
-    let echartsInstance = window.echarts.getInstanceByDom(echartRef.current);
+    let echartsInstance = window.echarts?.getInstanceByDom(echartRef.current);
     echartsInstance && echartsInstance.resize();
   }, 300);
 
