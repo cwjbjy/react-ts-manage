@@ -1,4 +1,5 @@
 const minimist = require('minimist');
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackBar = require('webpackbar');
 // const CompressionPlugin = require('compression-webpack-plugin');
@@ -20,6 +21,10 @@ const webpackPlugins = () => {
   //   if (!__DEV__) {
   //     configs.push(new CompressionPlugin());
   //   }
+
+  if (__DEV__ && options.moduleLoad === 'true') {
+    configs.push(new NormalModuleReplacementPlugin(/(.*)routes/, './dev.routerConfig.tsx'));
+  }
 
   return configs;
 };

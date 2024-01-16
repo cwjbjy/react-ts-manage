@@ -5,8 +5,9 @@ import ErrorBoundary from '@/components/errorBoundary';
 
 import * as path from '../settings/routerMap';
 
-import chart from './chart';
-import drag from './drag';
+<%_ chooseModules.forEach(function(item){%>
+    import <%=item %> from '<%=deelRouteName(item) %>';
+  <% }) _%>
 
 const Login = lazy(() => import(/* webpackChunkName: "Login" */ '@/pages/login'));
 const HomeLayout = lazy(() => import(/* webpackChunkName: "homeLayout" */ '@/layout'));
@@ -73,8 +74,9 @@ const routes = [
         path: path.MANAGE,
         element: <UserManage />,
       },
-      ...chart,
-      ...drag,
+      <%_ chooseModules.forEach(function(item){%>
+        ...<%=item %>,
+       <% }) %>
       {
         path: '/',
         element: (

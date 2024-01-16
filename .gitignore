@@ -12,7 +12,7 @@
 /build
 /react-manage
 /react-manage.zip
-
+/src/router/dev.routerConfig.tsx
 # misc
 .DS_Store
 .env.local
