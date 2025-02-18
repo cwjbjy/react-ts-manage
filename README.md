@@ -12,15 +12,11 @@ UI框架：antD
 
 通信：fetch，WebSocket
 
-打包工具：wepack5
+打包工具：Rspack
 
 ## 接口
 
-下载后台node服务 https://github.com/cwjbjy/express-api
-
-yarn
-
-yarn dev
+api接口： https://github.com/cwjbjy/nest-app
 
 后台服务起来后，前端即可正常访问接口
 
