@@ -1,7 +1,7 @@
 /* 接口请求参数类型 */
 export interface LoginParams {
   userName: string;
-  passWord: string;
+  password: string;
 }
 
 export interface RegisterParams extends LoginParams {

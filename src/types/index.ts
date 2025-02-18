@@ -8,7 +8,7 @@ export interface Message {
 //用户信息
 export interface UserInfo {
   flag?: boolean;
-  passWord: string;
+  password: string;
   userName: string;
 }
 

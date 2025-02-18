@@ -55,7 +55,7 @@ const UserManage = () => {
       });
       ls.set(USER_INFO, {
         userName: info?.user_name,
-        passWord: password,
+        password: password,
         flag: true,
       });
     },

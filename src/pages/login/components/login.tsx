@@ -26,7 +26,7 @@ const icon = {
 
 const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
   useImperativeHandle(ref, () => ({
-    login: (params: { userName: string; passWord: string }) => {
+    login: (params: { userName: string; password: string }) => {
       run(params);
     },
   }));
@@ -46,7 +46,7 @@ const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
       if (error.status === CODE_NAME_PASS) {
         form.setFields([
           {
-            name: 'passWord',
+            name: 'password',
             errors: ['用户名或密码错误'],
           },
         ]);
@@ -61,11 +61,11 @@ const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
   });
 
   const onFinish = (params: UserInfo) => {
-    const { userName, passWord } = params;
+    const { userName, password } = params;
     setUser(params);
     run({
       userName,
-      passWord: CryptoJS.MD5(passWord).toString(),
+      password: CryptoJS.MD5(password).toString(),
     });
   };
 
@@ -88,7 +88,7 @@ const LoginForm = forwardRef(({ setUser, userInfo }: Props, ref) => {
       </Form.Item>
 
       <Form.Item
-        name="passWord"
+        name="password"
         rules={[
           {
             required: true,
