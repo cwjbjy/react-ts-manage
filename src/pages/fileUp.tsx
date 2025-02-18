@@ -16,8 +16,8 @@ import useFileStore from '@/store/file';
 import type { UploadChangeParam } from 'antd/es/upload';
 import type { UploadFile } from 'antd/es/upload/interface';
 
-const baseURL = process.env.REACT_APP_AUTH_URL;
-const img_url = process.env.REACT_APP_IMG_URL;
+const baseURL = process.env.PUBLIC_AUTH_URL;
+const img_url = process.env.PUBLIC_IMG_URL;
 
 const beforeUpload = (file: File) => {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
@@ -57,7 +57,7 @@ const FileUp = () => {
         return;
       }
       if (info.file.status === 'done') {
-        run({ user_name: userName });
+        run({ userName: userName });
         setLoading(false);
       }
     },
@@ -72,7 +72,7 @@ const FileUp = () => {
         </p>
         <Upload
           name="file"
-          data={{ user_name: userName }}
+          data={{ userName: userName }}
           listType="picture-card"
           className="avatar-uploader"
           showUploadList={false}

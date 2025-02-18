@@ -56,7 +56,7 @@ const Header = ({ userName }: Props) => {
   const { changeTheme } = useThemeStore();
   const navigation = useNavigate();
 
-  useRequest(() => getImage({ user_name: userName }), {
+  useRequest(() => getImage({ userName: userName }), {
     ready: !!userName,
     onSuccess: (res) => {
       setFileName(res.data[0].photo);
@@ -94,7 +94,7 @@ const Header = ({ userName }: Props) => {
         <Dropdown menu={{ items: list, onClick: onUserClick }} className="user-drop">
           <div className="userImage">
             {fileName && (
-              <img src={`${process.env.REACT_APP_IMG_URL}${fileName}`} className="user-img" alt="加载失败" />
+              <img src={`${process.env.PUBLIC_IMG_URL}${fileName}`} className="user-img" alt="加载失败" />
             )}
             <span style={{ marginRight: 5 }}>
               <span style={{ marginRight: 2 }}>{userName}</span>

@@ -6,6 +6,6 @@ export enum Url {
   DeleteUser = '/deleteUser',
   UpdateUser = '/updateUser',
   GetImage = '/getImage',
-  GetUser = '/getUser',
+  GetUser = '/findUser',
   Track = '/getUserInfo',
 }

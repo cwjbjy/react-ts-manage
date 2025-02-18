@@ -15,7 +15,7 @@ export interface UserIdParams {
 }
 
 export interface UserNameParams {
-  user_name: string;
+  userName: string;
 }
 
 export interface UpdateUserParams extends UserIdParams, UserNameParams {

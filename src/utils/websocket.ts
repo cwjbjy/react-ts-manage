@@ -1,6 +1,6 @@
 import { BUS_WS } from '@/settings/bus';
 
-const ws = process.env.REACT_APP_WS;
+const ws = process.env.PUBLIC_WS;
 
 export default class WebsocketClass {
   public url: string;

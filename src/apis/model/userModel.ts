@@ -8,5 +8,5 @@ export interface RowItem {
   id: number;
   password: string;
   photo: string;
-  user_name: string;
+  userName: string;
 }

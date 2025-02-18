@@ -16,7 +16,7 @@ import './utils/i18';
 
 //自己的npm包，数据埋点
 init({
-  url: `${process.env.REACT_APP_AUTH_URL}/track`, //必传参数，数据上传服务器地址
+  url: `${process.env.PUBLIC_AUTH_URL}/track`, //必传参数，数据上传服务器地址
   plugin: [TYPES.ROUTER], //监听路由
   data: {
     vs: 'react-manage',

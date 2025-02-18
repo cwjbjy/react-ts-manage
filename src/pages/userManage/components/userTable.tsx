@@ -11,7 +11,7 @@ interface Props {
   onDelete(value: RowItem): void;
 }
 
-const img_url = process.env.REACT_APP_IMG_URL;
+const img_url = process.env.PUBLIC_IMG_URL;
 
 const UserTable = ({ tableData, onModal, onDelete }: Props) => {
   const onEdit = useCallback(
@@ -28,7 +28,7 @@ const UserTable = ({ tableData, onModal, onDelete }: Props) => {
     () => [
       {
         title: '用户名',
-        dataIndex: 'user_name',
+        dataIndex: 'userName',
       },
       {
         title: '单击图像可以放大',

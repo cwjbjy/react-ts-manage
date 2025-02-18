@@ -14,7 +14,7 @@ interface Props {
   params?: Record<string, any>;
 }
 
-const baseURL = process.env.REACT_APP_AUTH_URL;
+const baseURL = process.env.PUBLIC_AUTH_URL;
 
 class FetchClient {
   /**

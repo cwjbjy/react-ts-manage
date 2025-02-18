@@ -36,7 +36,7 @@ const HomePage = () => {
   useRequest(
     () =>
       getUser({
-        user_name: userName,
+        userName: userName,
       }),
     {
       onSuccess: (res) => {

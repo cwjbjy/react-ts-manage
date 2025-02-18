@@ -13,7 +13,6 @@ import Menus from '../components/menus/index';
 
 import { ls } from '@/utils/storage';
 
-import useVersion from '@/hooks/useVersion';
 import { ACCESS_TOKEN } from '@/settings/localStorage';
 import { LOGIN } from '@/settings/routerMap';
 import useThemeStore from '@/store/theme';
@@ -22,7 +21,6 @@ import './index.scss';
 
 const AppHome = () => {
   useTitle('react管理系统');
-  useVersion(); //版本更新提示
   const overFlowRef = useRef(null);
 
   const { theme } = useThemeStore();

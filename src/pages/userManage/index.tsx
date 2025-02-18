@@ -17,7 +17,7 @@ import UserTable from './components/userTable';
 
 interface Info {
   id: number;
-  user_name: string;
+  userName: string;
 }
 
 const setData = (data: RowItem[]) => {
@@ -54,7 +54,7 @@ const UserManage = () => {
         content: '密码修改成功',
       });
       ls.set(USER_INFO, {
-        userName: info?.user_name,
+        userName: info?.userName,
         password: password,
         flag: true,
       });
@@ -80,10 +80,10 @@ const UserManage = () => {
   );
 
   const handleOk = useCallback(() => {
-    let { id, user_name } = info as Info;
+    let { id, userName } = info as Info;
     handleUpdate({
       id,
-      user_name,
+      userName,
       password: CryptoJS.MD5(password).toString(),
     });
     setModal(false);

@@ -10,7 +10,7 @@ interface Props {
   fileName: string;
 }
 
-const img_url = process.env.REACT_APP_IMG_URL;
+const img_url = process.env.PUBLIC_IMG_URL;
 
 const UserCard = ({ userName = '一叶扁舟', registerTime = '2021-03-21', fileName = '' }: Props) => {
   let role = userName === MANAGE_NAME ? '管理员' : '普通用户';

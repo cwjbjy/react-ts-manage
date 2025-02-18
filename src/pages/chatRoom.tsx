@@ -12,7 +12,7 @@ import { BUS_WS } from '@/settings/bus';
 import useFileStore from '@/store/file';
 import type { Message } from '@/types';
 
-const img_url = process.env.REACT_APP_IMG_URL;
+const img_url = process.env.PUBLIC_IMG_URL;
 
 const ChatRoom = () => {
   const [messageHistory, setMessageHistory] = useState<Message[]>([]);
